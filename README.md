@@ -15,8 +15,7 @@ An interactive, editorial-grade web presentation built with clean frosted glassm
 
 
 
-- **LIVE PAGE** ---> https://github.com/Rudyhere27/PresentationForCUSB1
-
+- **LIVE PAGE** ---> https://rudyhere27.github.io/PresentationForCUSB1/
 
 
 
