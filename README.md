@@ -12,6 +12,14 @@ An interactive, editorial-grade web presentation built with clean frosted glassm
 - **Synthesized Audio Chime:** Embedded Web Audio API major chord sequence that rings out upon reaching the closing slide (with optional `.mp3` local fallback).
 - **Keyboard & Click Controls:** Fully operable with presentation clickers, arrow keys, or custom dock navigation.
 
+
+
+
+- **LIVE PAGE** ---> https://github.com/Rudyhere27/PresentationForCUSB1
+
+
+
+
 ---
 
 ## 📁 Repository & Directory Layout
@@ -40,4 +48,10 @@ PresentationForCUSB1/
     Topic: Biomimicry: 3.8 Billion Years of R&D
 
 
-    LIVE PAGE ---> https://github.com/Rudyhere27/PresentationForCUSB1
+
+
+
+
+
+
+    
