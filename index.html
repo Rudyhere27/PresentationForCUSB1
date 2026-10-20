@@ -3,1237 +3,1736 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Biomimicry — Nature's Master Blueprints</title>
+  <title>Biomimicry: 3.8 Billion Years of R&D — Keynote by Nimisha | CUSB</title>
+
+  <!-- Editorial Typography: Cormorant Garamond, Plus Jakarta Sans, JetBrains Mono, Caveat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* ==========================================================================
+       DESIGN TOKENS & MUSEUM MONOGRAPH PALETTE
+       ========================================================================== */
     :root {
-      --bg-base: #07090e;
-      --card-bg: rgba(18, 23, 34, 0.65);
-      --card-border: rgba(255, 255, 255, 0.15);
-      --card-border-subtle: rgba(255, 255, 255, 0.08);
-      --card-highlight: rgba(255, 255, 255, 0.28);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
+      --bg-obsidian: #0B0B0A;
+      --bg-charcoal: #141412;
+      --bg-elevated: #1B1B18;
+      --text-bone: #F4F1EA;
+      --text-stone: #9A968E;
+      --text-muted: #66635B;
+      --rule-hairline: rgba(244, 241, 234, 0.12);
+      --rule-strong: rgba(244, 241, 234, 0.28);
+      --accent-rust: #C85A32;
+      --accent-sage: #6E8B74;
+      --accent-ochre: #D4A359;
       --accent-cyan: #38bdf8;
-      --accent-emerald: #10b981;
-      --accent-amber: #f59e0b;
-      --blur-val: 32px;
+      
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-hand: 'Caveat', cursive;
+
+      --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      user-select: none;
     }
 
-    body {
-      background-color: var(--bg-base);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      min-height: 100vh;
+    html, body {
+      width: 100vw;
+      height: 100vh;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
+      background-color: var(--bg-obsidian);
+      color: var(--text-bone);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      user-select: text;
     }
 
-    /* Ambient Rich Aurora Glows (Apple Keynote Style) */
-    .ambient-canvas {
+    ::selection {
+      background: rgba(212, 163, 89, 0.25);
+      color: var(--text-bone);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent-ochre);
+      outline-offset: 3px;
+    }
+
+    /* Tactile Grain Texture Overlay */
+    body::before {
+      content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
+      z-index: 999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    .aurora-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(140px);
-      opacity: 0.38;
-      will-change: transform, opacity;
-      transition: all 1.4s ease;
+    /* Reading Progress Track */
+    .progress-track {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 2px;
+      background: rgba(244, 241, 234, 0.05);
+      z-index: 100;
     }
 
-    .aurora-1 {
-      width: 65vw;
-      height: 65vw;
-      top: -20%;
-      left: -15%;
-      background: radial-gradient(circle, rgba(14, 165, 233, 0.55) 0%, rgba(16, 185, 129, 0.25) 45%, rgba(0,0,0,0) 70%);
-      animation: floatA 22s ease-in-out infinite alternate;
+    .progress-fill {
+      height: 100%;
+      width: 14.28%;
+      background: linear-gradient(90deg, var(--accent-ochre), var(--accent-rust));
+      transition: width 0.45s var(--ease-editorial);
+      will-change: width;
     }
 
-    .aurora-2 {
-      width: 58vw;
-      height: 58vw;
-      bottom: -18%;
-      right: -10%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.5) 0%, rgba(245, 158, 11, 0.22) 50%, rgba(0,0,0,0) 70%);
-      animation: floatB 26s ease-in-out infinite alternate;
-    }
-
-    .aurora-3 {
-      width: 42vw;
-      height: 42vw;
-      top: 35%;
-      left: 35%;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, rgba(6, 182, 212, 0.2) 55%, rgba(0,0,0,0) 70%);
-      animation: floatC 20s ease-in-out infinite alternate;
-    }
-
-    @keyframes floatA {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(70px, 50px) scale(1.1); }
-    }
-    @keyframes floatB {
-      0% { transform: translate(0, 0) scale(1.05); }
-      100% { transform: translate(-60px, -45px) scale(0.95); }
-    }
-    @keyframes floatC {
-      0% { transform: translate(0, 0) scale(0.95); }
-      100% { transform: translate(45px, -65px) scale(1.12); }
-    }
-
-    /* Deck Viewport */
-    .deck-container {
+    /* Slide Stage */
+    .deck-viewport {
       position: relative;
       width: 100vw;
       height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2;
-      perspective: 1200px;
+      overflow: hidden;
+      transition: transform 0.55s var(--ease-editorial), width 0.55s var(--ease-editorial);
+    }
+
+    body.notes-open .deck-viewport {
+      width: calc(100vw - 440px);
     }
 
     .slide {
       position: absolute;
-      width: min(94vw, 1360px);
-      height: min(88vh, 830px);
-      padding: clamp(2rem, 3.4vw, 3.6rem);
-      border-radius: 32px;
-      background: var(--card-bg);
-      backdrop-filter: blur(var(--blur-val)) saturate(190%);
-      -webkit-backdrop-filter: blur(var(--blur-val)) saturate(190%);
-      border: 1px solid var(--card-border);
-      box-shadow: 
-        0 30px 80px -15px rgba(0, 0, 0, 0.8),
-        inset 0 1px 0 0 var(--card-highlight),
-        inset 0 0 25px 0 rgba(255, 255, 255, 0.02);
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      padding: clamp(1.8rem, 3.2vw, 3.6rem) clamp(2.2rem, 4.4vw, 5rem);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       opacity: 0;
-      transform: scale(0.96) translateY(25px);
+      visibility: hidden;
+      transform: translateY(14px);
+      transition: opacity 0.5s var(--ease-editorial), transform 0.5s var(--ease-editorial), visibility 0.5s;
       pointer-events: none;
-      transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .slide.active {
       opacity: 1;
-      transform: scale(1) translateY(0);
+      visibility: visible;
+      transform: translateY(0);
       pointer-events: auto;
       z-index: 10;
     }
 
-    .slide.previous {
-      opacity: 0;
-      transform: scale(1.03) translateY(-20px);
-    }
-
-    /* Refined Badges */
-    .pill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.45rem 1.15rem;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(14px);
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #e2e8f0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-    }
-
-    .pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent-cyan);
-      box-shadow: 0 0 10px var(--accent-cyan);
-    }
-
-    h1.display-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3.2rem, 5.2vw, 5.2rem);
-      font-weight: 600;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: #ffffff;
-      background: linear-gradient(180deg, #ffffff 40%, rgba(255, 255, 255, 0.75) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .headline-serif {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      color: #7dd3fc;
-      -webkit-text-fill-color: #7dd3fc;
-    }
-
-    h2.slide-heading {
-      font-size: clamp(2rem, 3.2vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      line-height: 1.18;
-      color: #ffffff;
-    }
-
-    p.subtitle {
-      font-size: clamp(1.02rem, 1.35vw, 1.2rem);
-      color: var(--text-muted);
-      font-weight: 400;
-      line-height: 1.6;
-    }
-
-    /* Grids & Cards */
-    .split-grid-hero {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: clamp(1.5rem, 3vw, 3rem);
-      height: 100%;
-      align-items: center;
-    }
-
-    .info-pane {
-      display: flex;
-      flex-direction: column;
-      gap: 1.35rem;
-    }
-
-    .comparison-cards-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.3rem;
-      height: 100%;
-      max-height: 460px;
-    }
-
-    .spec-card {
-      position: relative;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--card-border-subtle);
-      border-radius: 24px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.12);
-      cursor: zoom-in;
-    }
-
-    .spec-card:hover {
-      background: rgba(255, 255, 255, 0.07);
-      border-color: rgba(255, 255, 255, 0.28);
-      transform: translateY(-5px);
-      box-shadow: 0 22px 50px rgba(0,0,0,0.6), 0 0 25px rgba(56, 189, 248, 0.12);
-    }
-
-    .image-container {
-      width: 100%;
-      height: 60%;
-      position: relative;
-      overflow: hidden;
-      background: #090d15;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .image-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      filter: brightness(0.95) contrast(1.04);
-    }
-
-    .image-container img.fit-contain {
-      object-fit: contain;
-      background: rgba(0,0,0,0.5);
-    }
-
-    .spec-card:hover .image-container img {
-      transform: scale(1.05);
-      filter: brightness(1.02);
-    }
-
-    .zoom-hint {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      opacity: 0;
-      transform: scale(0.85);
-      transition: all 0.25s ease;
-      pointer-events: none;
-    }
-
-    .spec-card:hover .zoom-hint {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .card-tag {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      padding: 0.35rem 0.85rem;
-      border-radius: 9999px;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #fff;
-    }
-
-    .card-content {
-      padding: 1.15rem 1.3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex: 1;
-      background: rgba(12, 17, 26, 0.45);
-    }
-
-    .card-content h4 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 0.35rem;
-      color: #fff;
-    }
-
-    .card-content p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-    }
-
-    .metrics-ribbon {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 0.4rem;
-    }
-
-    .metric-box {
-      padding: 0.95rem 1.15rem;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.035);
-      border: 1px solid var(--card-border-subtle);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .metric-value {
-      font-size: 1.55rem;
-      font-weight: 800;
-      color: var(--accent-cyan);
-      letter-spacing: -0.02em;
-    }
-
-    .metric-label {
+    /* Typography & Hierarchy */
+    .editorial-kicker {
+      font-family: var(--font-mono);
       font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--text-dim);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .slide-1-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.9fr;
-      gap: 2rem;
-      height: 100%;
-      align-items: center;
-    }
-
-    .will-smith-frame {
-      position: relative;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .will-smith-img {
-      max-height: 85%;
-      max-width: 100%;
-      object-fit: contain;
-      transform: scaleX(-1);
-      filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 25px rgba(56, 189, 248, 0.18));
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .will-smith-frame:hover .will-smith-img {
-      transform: scaleX(-1) scale(1.04);
-    }
-
-    /* =========================================================
-       SLIDE 6 (OUTRO): MEME TEXT FULLY PRESERVED (NO CROPPING)
-       ========================================================= */
-    .outro-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-      width: 100%;
-      position: relative;
-    }
-
-    .outro-title {
-      font-family: 'Caveat', cursive;
-      font-size: clamp(3.2rem, 4.8vw, 5rem);
-      color: #ffffff;
-      text-align: center;
-      letter-spacing: 0.02em;
-      text-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
-    }
-
-    .outro-center-display {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      flex: 1;
-      margin: 0.8rem 0;
-    }
-
-    /* Frame that houses the Tony Stark meme without chopping text */
-    .featured-outro-card {
-      width: min(90vw, 840px);
-      height: min(48vh, 440px);
-      border-radius: 24px;
-      background: rgba(10, 14, 22, 0.65);
-      backdrop-filter: blur(28px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 
-        0 25px 65px rgba(0,0,0,0.7),
-        0 0 35px rgba(56, 189, 248, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
-      cursor: zoom-in;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding: 0.6rem;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .featured-outro-card:hover {
-      border-color: rgba(255, 255, 255, 0.35);
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 
-        0 35px 80px rgba(0,0,0,0.85),
-        0 0 45px rgba(56, 189, 248, 0.25);
-    }
-
-    /* object-fit: contain keeps the full image + top & bottom text visible */
-    .featured-outro-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 18px;
-    }
-
-    .signature-container {
-      align-self: flex-end;
-      text-align: right;
-      padding-top: 0.2rem;
-    }
-
-    .signature-text {
-      font-family: 'Caveat', cursive;
-      font-size: clamp(2.4rem, 3.6vw, 3.6rem);
-      color: #ffffff;
-      letter-spacing: 0.02em;
-      position: relative;
+      color: var(--accent-rust);
+      margin-bottom: 0.45rem;
       display: inline-block;
     }
 
-    .signature-underline {
-      position: absolute;
-      bottom: 2px;
-      right: 0;
-      width: 65%;
-      height: 3px;
-      background: #ef4444;
-      border-radius: 9999px;
-      box-shadow: 0 0 10px #ef4444;
+    .editorial-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      color: var(--text-bone);
+      margin-bottom: 1rem;
     }
 
-    /* Floating Apple Dock */
-    .dock-container {
-      position: fixed;
-      bottom: 22px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 50;
-      display: flex;
+    .editorial-title em {
+      font-style: italic;
+      color: var(--accent-ochre);
+      font-weight: 400;
+    }
+
+    .editorial-lead {
+      font-size: clamp(0.96rem, 1.2vw, 1.15rem);
+      line-height: 1.64;
+      color: var(--text-stone);
+      max-width: 62ch;
+      margin-bottom: 1.25rem;
+    }
+
+    .editorial-lead strong {
+      color: var(--text-bone);
+      font-weight: 500;
+    }
+
+    .citation-note {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-top: 0.4rem;
+    }
+
+    /* Grids */
+    .slide-body {
+      flex: 1;
+      display: grid;
+      gap: clamp(1.5rem, 3vw, 3.4rem);
       align-items: center;
-      gap: 0.85rem;
-      padding: 0.6rem 1.25rem;
-      border-radius: 9999px;
-      background: rgba(15, 23, 42, 0.72);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+      min-height: 0;
+      padding: clamp(0.6rem, 1.5vh, 1.5rem) 0;
     }
 
-    .dock-btn {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #fff;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.25s ease;
+    .grid-asymmetric {
+      grid-template-columns: 1.15fr 1fr;
     }
 
-    .dock-btn:hover {
-      background: rgba(255, 255, 255, 0.22);
-      transform: scale(1.08);
+    .grid-balanced {
+      grid-template-columns: 1fr 1fr;
     }
 
-    .dots-nav {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0 0.5rem;
+    .grid-full {
+      grid-template-columns: 1fr;
     }
 
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.25);
-      cursor: pointer;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Spec Strip */
+    .spec-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--rule-hairline);
+      border-left: 1px solid var(--rule-hairline);
+      margin-top: 0.85rem;
     }
 
-    .dot.active {
-      width: 28px;
-      background: var(--text-main);
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+    .spec-cell {
+      padding: 0.75rem 0.95rem;
+      border-right: 1px solid var(--rule-hairline);
+      border-bottom: 1px solid var(--rule-hairline);
+      background: rgba(20, 20, 18, 0.45);
     }
 
-    .script-toggle-btn {
-      padding: 0.45rem 0.95rem;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #e2e8f0;
-      font-size: 0.75rem;
+    .spec-value {
+      font-family: var(--font-serif);
+      font-size: clamp(1.35rem, 1.9vw, 1.85rem);
       font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: all 0.25s ease;
+      color: var(--text-bone);
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
     }
 
-    .script-toggle-btn:hover {
-      background: rgba(255, 255, 255, 0.18);
+    .spec-value.rust { color: var(--accent-rust); }
+    .spec-value.sage { color: var(--accent-sage); }
+    .spec-value.ochre { color: var(--accent-ochre); }
+
+    .spec-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-stone);
+      line-height: 1.35;
     }
 
-    /* Speaker Script Teleprompter Drawer */
-    .speaker-drawer {
-      position: fixed;
-      top: 0;
-      right: -480px;
-      width: min(90vw, 440px);
-      height: 100vh;
-      background: rgba(10, 15, 25, 0.92);
-      backdrop-filter: blur(40px) saturate(180%);
-      border-left: 1px solid rgba(255, 255, 255, 0.14);
-      z-index: 100;
-      padding: 2.5rem 2rem;
+    /* Dual Media Plate Container */
+    .media-pair-stage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.15rem;
+      height: 100%;
+      max-height: 520px;
+    }
+
+    .figure-plate {
+      position: relative;
+      height: 100%;
+      background: var(--bg-charcoal);
+      border: 1px solid var(--rule-hairline);
+      padding: clamp(0.85rem, 1.4vw, 1.25rem);
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      box-shadow: -20px 0 60px rgba(0,0,0,0.8);
-      transition: right 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      justify-content: space-between;
+      cursor: zoom-in;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      overflow: hidden;
     }
 
-    .speaker-drawer.open {
-      right: 0;
+    .figure-plate:hover {
+      border-color: var(--accent-ochre);
+      background: #171714;
     }
 
-    .drawer-header {
+    .figure-plate-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule-hairline);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-stone);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .drawer-header h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
+    .zoom-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--accent-ochre);
+      font-size: 0.65rem;
+      padding: 0.18rem 0.5rem;
+      border: 1px solid rgba(212, 163, 89, 0.35);
+      background: rgba(212, 163, 89, 0.06);
+    }
+
+    .figure-img-box {
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #080807;
+      overflow: hidden;
+    }
+
+    .figure-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s var(--ease-editorial);
+    }
+
+    .figure-img-box img.contain-fit {
+      object-fit: contain;
+    }
+
+    .figure-plate:hover .figure-img-box img {
+      transform: scale(1.04);
+    }
+
+    .figure-plate-details {
+      border-top: 1px solid var(--rule-hairline);
+      padding-top: 0.65rem;
+      margin-top: 0.65rem;
+    }
+
+    .figure-plate-details h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
       color: #fff;
+      margin-bottom: 0.2rem;
     }
 
-    .drawer-close {
-      background: none;
+    .figure-plate-details p {
+      font-size: 0.8rem;
+      color: var(--text-stone);
+      line-height: 1.4;
+    }
+
+    /* Hero Will Smith Frame (Slide 1) */
+    .hero-gesture-box {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-gesture-box img {
+      max-height: 82%;
+      max-width: 100%;
+      object-fit: contain;
+      transform: scaleX(-1);
+      filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.85));
+      transition: transform 0.4s ease;
+    }
+
+    .hero-gesture-box:hover img {
+      transform: scaleX(-1) scale(1.03);
+    }
+
+    /* Slide 4 Organic Botanical Exhibit */
+    .botanical-monograph-stage {
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 50%, #171714 0%, #0E0E0C 85%);
+      border: 1px solid rgba(244, 241, 234, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 0.8rem;
+    }
+
+    .botanical-monograph-stage svg {
+      width: 100%;
+      height: 100%;
+      max-height: 48vh;
+      object-fit: contain;
+    }
+
+    /* Slide 6 Synthesis Matrix Table */
+    .matrix-container {
+      width: 100%;
+      border: 1px solid var(--rule-hairline);
+      background: var(--bg-charcoal);
+    }
+
+    .editorial-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .editorial-table th {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.1rem;
+      border-bottom: 1px solid var(--rule-strong);
+      border-right: 1px solid var(--rule-hairline);
+      color: var(--text-stone);
+      background: rgba(11, 11, 10, 0.55);
+    }
+
+    .editorial-table td {
+      padding: 0.95rem 1.1rem;
+      border-bottom: 1px solid var(--rule-hairline);
+      border-right: 1px solid var(--rule-hairline);
+      vertical-align: top;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .editorial-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .editorial-table th:last-child,
+    .editorial-table td:last-child {
+      border-right: none;
+    }
+
+    .domain-name {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-bone);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .domain-sub {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent-ochre);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .brute-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent-rust);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.2rem;
+    }
+
+    .bio-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent-sage);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Slide 7 Meme Frame (Tony Stark Vector Plate) */
+    .signature-block {
+      margin-top: 1.35rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .nimisha-signature {
+      font-family: var(--font-hand);
+      font-size: clamp(2.4rem, 3.6vw, 3.4rem);
+      color: var(--accent-ochre);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      display: inline-block;
+      text-shadow: 0 2px 14px rgba(212, 163, 89, 0.18);
+    }
+
+    .meme-editorial-frame {
+      height: 100%;
+      max-height: 66vh;
+      background: #0E0E0D;
+      border: 1px solid var(--rule-strong);
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: zoom-in;
+      transition: border-color 0.3s ease;
+    }
+
+    .meme-editorial-frame:hover {
+      border-color: var(--accent-ochre);
+    }
+
+    .meme-stage {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      background: #080807;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .meme-stage svg {
+      width: 100%;
+      height: 100%;
+      max-height: 52vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .audio-badge-btn {
+      background: transparent;
+      border: 1px solid var(--rule-hairline);
+      color: var(--text-stone);
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.65rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .audio-badge-btn:hover {
+      border-color: var(--accent-ochre);
+      color: var(--text-bone);
+    }
+
+    /* Minimal Floating Navigation Dock */
+    .floating-dock {
+      position: fixed;
+      bottom: 1.35rem;
+      right: 1.75rem;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      background: rgba(16, 16, 14, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--rule-strong);
+      padding: 0.25rem;
+      opacity: 0.45;
+      transition: opacity 0.3s ease, right 0.55s var(--ease-editorial);
+    }
+
+    .floating-dock:hover,
+    body.notes-open .floating-dock {
+      opacity: 1;
+    }
+
+    body.notes-open .floating-dock {
+      right: calc(440px + 1.75rem);
+    }
+
+    .dock-btn {
+      background: transparent;
       border: none;
-      color: var(--text-dim);
-      font-size: 1.5rem;
+      color: var(--text-bone);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      padding: 0.45rem 0.7rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .dock-btn:hover {
+      background: rgba(244, 241, 234, 0.09);
+      color: var(--accent-ochre);
+    }
+
+    .dock-counter {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-stone);
+      padding: 0 0.65rem;
+      letter-spacing: 0.1em;
+    }
+
+    .dock-divider {
+      width: 1px;
+      height: 16px;
+      background: var(--rule-hairline);
+      margin: 0 0.15rem;
+    }
+
+    /* Bilingual Teleprompter Drawer */
+    .teleprompter-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 440px;
+      max-width: 92vw;
+      height: 100vh;
+      background: rgba(14, 14, 13, 0.96);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-left: 1px solid var(--rule-strong);
+      z-index: 120;
+      transform: translateX(100%);
+      transition: transform 0.55s var(--ease-editorial);
+      display: flex;
+      flex-direction: column;
+      user-select: text;
+    }
+
+    body.notes-open .teleprompter-drawer {
+      transform: translateX(0);
+    }
+
+    .tp-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--rule-hairline);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tp-title-group h4 {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-ochre);
+    }
+
+    .tp-title-group p {
+      font-size: 0.75rem;
+      color: var(--text-stone);
+      margin-top: 0.15rem;
+    }
+
+    .tp-close-btn {
+      background: transparent;
+      border: 1px solid var(--rule-hairline);
+      color: var(--text-stone);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.35rem 0.6rem;
       cursor: pointer;
     }
 
-    .script-body {
-      overflow-y: auto;
-      font-size: 0.98rem;
-      line-height: 1.7;
-      color: #e2e8f0;
+    .tp-close-btn:hover {
+      color: var(--text-bone);
+      border-color: var(--text-bone);
+    }
+
+    .tp-lang-bar {
+      padding: 0.85rem 1.5rem;
+      border-bottom: 1px solid var(--rule-hairline);
       display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+      gap: 0.5rem;
+      background: rgba(20, 20, 18, 0.7);
     }
 
-    .cue-box {
-      background: rgba(255, 255, 255, 0.05);
-      border-left: 3px solid var(--accent-cyan);
-      padding: 0.8rem 1rem;
-      border-radius: 0 12px 12px 0;
-      font-size: 0.82rem;
-      color: var(--text-muted);
+    .lang-pill {
+      flex: 1;
+      background: transparent;
+      border: 1px solid var(--rule-hairline);
+      color: var(--text-stone);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 0.65rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    /* Modal Lightbox */
-    .image-modal-backdrop {
+    .lang-pill.active {
+      background: var(--accent-ochre);
+      color: var(--bg-obsidian);
+      border-color: var(--accent-ochre);
+      font-weight: 600;
+    }
+
+    .tp-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+      font-size: 0.98rem;
+      line-height: 1.72;
+      color: var(--text-bone);
+    }
+
+    .tp-content p {
+      margin-bottom: 1.1rem;
+    }
+
+    .stage-cue {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-sage);
+      background: rgba(110, 139, 116, 0.1);
+      border-left: 2px solid var(--accent-sage);
+      padding: 0.45rem 0.75rem;
+      margin: 0.85rem 0;
+      letter-spacing: 0.03em;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-overlay {
       position: fixed;
       inset: 0;
-      z-index: 200;
-      background: rgba(4, 7, 13, 0.85);
-      backdrop-filter: blur(42px) saturate(180%);
-      -webkit-backdrop-filter: blur(42px) saturate(180%);
+      z-index: 500;
+      background: rgba(8, 8, 7, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: zoom-out;
+      visibility: hidden;
+      transition: opacity 0.35s var(--ease-editorial), visibility 0.35s;
     }
 
-    .image-modal-backdrop.active {
+    .lightbox-overlay.open {
       opacity: 1;
-      pointer-events: auto;
+      visibility: visible;
     }
 
-    .modal-frame {
-      position: relative;
-      max-width: min(88vw, 1100px);
-      max-height: min(82vh, 760px);
+    .lightbox-frame {
+      width: 90vw;
+      height: 85vh;
+      background: var(--bg-charcoal);
+      border: 1px solid var(--rule-strong);
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      padding: 1.5rem 2rem;
+      transform: scale(0.96);
+      transition: transform 0.35s var(--ease-editorial);
+    }
+
+    .lightbox-overlay.open .lightbox-frame {
+      transform: scale(1);
+    }
+
+    .lightbox-top {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      transform: scale(0.9) translateY(25px);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--rule-hairline);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-ochre);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
-    .image-modal-backdrop.active .modal-frame {
-      transform: scale(1) translateY(0);
+    .lightbox-close {
+      background: transparent;
+      border: 1px solid var(--rule-strong);
+      color: var(--text-bone);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.4rem 0.85rem;
+      cursor: pointer;
     }
 
-    .modal-frame img {
-      max-width: 100%;
-      max-height: calc(min(82vh, 760px) - 65px);
-      border-radius: 22px;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      box-shadow: 0 35px 80px -10px rgba(0, 0, 0, 0.9), 0 0 50px rgba(56, 189, 248, 0.15);
-      object-fit: contain;
-      background: rgba(10, 15, 25, 0.6);
+    .lightbox-close:hover {
+      border-color: var(--accent-rust);
+      color: var(--accent-rust);
     }
 
-    .modal-caption-pill {
-      margin-top: 1rem;
-      padding: 0.55rem 1.3rem;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(20px);
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #f1f5f9;
+    .lightbox-stage {
+      flex: 1;
+      min-height: 0;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
+      padding: 1.25rem 0;
     }
 
-    .modal-close-hint {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      color: var(--text-dim);
-      font-size: 0.8rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+    .lightbox-stage img,
+    .lightbox-stage svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .lightbox-bottom {
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--rule-hairline);
+      font-size: 0.85rem;
+      color: var(--text-stone);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 1024px) {
+      .grid-asymmetric,
+      .grid-balanced {
+        grid-template-columns: 1fr;
+      }
+      .media-pair-stage {
+        max-height: 360px;
+      }
+      .slide {
+        overflow-y: auto;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Dynamic Lighting Canvas -->
-  <div class="ambient-canvas">
-    <div class="aurora-orb aurora-1"></div>
-    <div class="aurora-orb aurora-2"></div>
-    <div class="aurora-orb aurora-3"></div>
+  <!-- Reading Progress Track -->
+  <div class="progress-track" aria-hidden="true">
+    <div class="progress-fill" id="progress-fill"></div>
   </div>
 
-  <div class="deck-container">
+  <main class="deck-viewport" id="deckViewport">
 
-    <!-- ================= SLIDE 1 ================= -->
-    <section class="slide active" id="slide-1">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span class="pill-badge"><span class="pill-dot"></span> Biomimetic Innovation</span>
-        <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-dim); letter-spacing: 0.08em;">KEYNOTE • 01 / 06</span>
-      </div>
-
-      <div class="slide-1-grid">
-        <div style="display: flex; flex-direction: column; gap: 1.35rem;">
-          <h1 class="display-title">
-            3.8 Billion<br>Years of <span class="headline-serif">R&amp;D.</span>
+    <!-- ================= SLIDE 1: THE INDUSTRIAL BLINDSPOT ================= -->
+    <section class="slide active" data-slide="1" aria-label="Slide 1: The Industrial Blindspot">
+      <div class="slide-body grid-asymmetric">
+        <div>
+          <span class="editorial-kicker">KEYNOTE // CENTRAL UNIVERSITY OF SOUTH BIHAR</span>
+          <h1 class="editorial-title">
+            3.8 Billion<br><em>Years of R&amp;D.</em>
           </h1>
-          <p class="subtitle" style="max-width: 540px;">
-            Whenever engineers run into design bottlenecks, we spend years testing solutions on computers. Nature has already run trillions of real-world trials through evolution—and the organisms around us are the working blueprints.
+          <p class="editorial-lead">
+            For two centuries, human engineering operated on a single brute-force assumption: if a machine encounters drag, enlarge the propulsion unit. If internal temperature rises, run massive compressors. If microbes colonize, spray toxic biocides. In doing so, we ignored 3.8 billion years of live empirical trials—where evolution solved these exact physical constraints with minimal energy and zero synthetic toxins.
           </p>
+
+          <div class="spec-strip">
+            <div class="spec-cell">
+              <div class="spec-value rust">70%</div>
+              <div class="spec-label">Industrial Solutions via Raw Energy / Bulk Material</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-value sage">68%</div>
+              <div class="spec-label">Biological Solutions via Micro-Geometry / Information</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-value ochre">Zero</div>
+              <div class="spec-label">Synthetic Toxins Required in Living Morphogenesis</div>
+            </div>
+          </div>
+          <div class="citation-note">
+            Foundational Reference: Janine Benyus (1997); Julian F.V. Vincent et al., <em>J. R. Soc. Interface</em> (2006).
+          </div>
         </div>
 
-        <div class="will-smith-frame">
-          <img class="will-smith-img" src="media/will_smith.png" onerror="this.src='https://pngimg.com/d/will_smith_PNG27.png'" alt="Will Smith Presentation Meme">
+        <div class="hero-gesture-box">
+          <img src="media/will_smith.png" 
+               onerror="this.onerror=null; this.src='https://pngimg.com/d/will_smith_PNG27.png';" 
+               alt="Speaker presentation gesture illustrating natural blueprints" />
         </div>
       </div>
+    </section>
 
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--card-border-subtle); padding-top: 1.25rem;">
+    <!-- ================= SLIDE 2: KINGFISHER & SHINKANSEN 500-SERIES ================= -->
+    <section class="slide" data-slide="2" aria-label="Slide 2: Kingfisher &amp; Shinkansen 500-Series">
+      <div class="slide-body grid-asymmetric">
         <div>
-          <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 0.2rem;">Presenter</div>
-          <div style="font-weight: 600; font-size: 0.95rem; color: #fff;">Department of English • Academic Keynote</div>
-        </div>
-        <div style="font-size: 0.8rem; color: var(--text-dim);">Use [Space] or [→] to advance</div>
-      </div>
-    </section>
-
-    <!-- ================= SLIDE 2 ================= -->
-    <section class="slide" id="slide-2">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span class="pill-badge"><span class="pill-dot" style="background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></span> Innovation 01 • Aerodynamics &amp; Sound</span>
-        <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-dim); letter-spacing: 0.08em;">02 / 06</span>
-      </div>
-
-      <div class="split-grid-hero">
-        <div class="info-pane">
-          <div>
-            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.4rem;">Solving The Sonic Boom</div>
-            <h2 class="slide-heading">The Kingfisher &amp; The Bullet Train</h2>
-          </div>
-          <p class="subtitle">
-            When Japan first tested its 500-Series bullet train at 300 km/h, it pushed a wall of air down mountain tunnels, creating a loud sonic boom upon exit. The fix didn't come from aerospace labs—it came from an engineer who noticed how kingfishers dive from air into water without a splash.
+          <span class="editorial-kicker">AEROACOUSTICS &amp; FLUID DYNAMICS</span>
+          <h2 class="editorial-title">
+            The Silence of the <em>Kingfisher.</em>
+          </h2>
+          <p class="editorial-lead">
+            In the 1990s, Japan’s 500-Series Shinkansen train reached 300 km/h, but entering narrow tunnels compressed air into micro-pressure shockwaves, producing loud tunnel booms exceeding residential noise standards. General manager and birdwatcher Eiji Nakatsu observed that the kingfisher plunges from air into water with negligible splash. By redesigning the train's 15-meter nose cone after the bird's wedge-shaped beak, tunnel air displaced smoothly.
           </p>
-          <div class="metrics-ribbon">
-            <div class="metric-box">
-              <span class="metric-value">+10%</span>
-              <span class="metric-label">Faster Speed</span>
+
+          <div class="spec-strip">
+            <div class="spec-cell">
+              <div class="spec-value ochre">300 km/h</div>
+              <div class="spec-label">Operational Speed Goal Achieved</div>
             </div>
-            <div class="metric-box">
-              <span class="metric-value">-15%</span>
-              <span class="metric-label">Power Saved</span>
+            <div class="spec-cell">
+              <div class="spec-value sage">~15%</div>
+              <div class="spec-label">Electricity Saved at 300 km/h Cruise</div>
             </div>
-            <div class="metric-box">
-              <span class="metric-value">0 dB</span>
-              <span class="metric-label">Tunnel Boom</span>
+            <div class="spec-cell">
+              <div class="spec-value rust">&lt; 70 dBA</div>
+              <div class="spec-label">Complied with Portal Standard (Limit: 75)</div>
             </div>
+          </div>
+          <div class="citation-note">
+            Source: Nakatsu, E. (1997). <em>Application of Biomimicry in Shinkansen High-Speed Train Design</em>. JR West Technical Journal.
           </div>
         </div>
 
-        <div class="comparison-cards-row">
-          <div class="spec-card" data-zoom-img="media/kingfisher.jpg" data-zoom-title="The Kingfisher Beak: Wedge shape engineered to pierce water with minimal drag.">
-            <div class="zoom-hint">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        <div class="media-pair-stage">
+          <figure class="figure-plate" onclick="openLightbox('fig-kingfisher', 'NATURAL PROTOTYPE — ALCEDO ATTHIS BEAK GEOMETRY', 'Wedge-shaped parabolic beak cross-section designed to part contrasting fluid densities smoothly.')">
+            <div class="figure-plate-header">
+              <span>NATURAL PROTOTYPE</span>
+              <span class="zoom-pill">[+] ZOOM</span>
             </div>
-            <div class="image-container">
-              <span class="card-tag">Nature's Design</span>
-              <img src="media/kingfisher.jpg" onerror="this.src='https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80'" alt="Kingfisher diving">
+            <div class="figure-img-box" id="fig-kingfisher">
+              <img src="media/kingfisher.jpg" 
+                   onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80';" 
+                   alt="Kingfisher bird diving" />
             </div>
-            <div class="card-content">
-              <h4>The Beak Geometry</h4>
-              <p>A slender, wedge-shaped beak lets the bird plunge into water without disturbing the surface.</p>
+            <div class="figure-plate-details">
+              <h4>Diamond-Wedge Beak</h4>
+              <p>Geometry engineered to divide contrasting fluid densities with zero explosive turbulence.</p>
             </div>
-          </div>
+          </figure>
 
-          <div class="spec-card" data-zoom-img="media/bullet_train.jpg" data-zoom-title="Shinkansen 500-Series: A redesigned 15-meter nose cone modeled after the kingfisher beak.">
-            <div class="zoom-hint">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          <figure class="figure-plate" onclick="openLightbox('fig-train', 'ENGINEERED ARTIFACT — SHINKANSEN 500-SERIES 15m NOSE', 'Aerodynamic steel nose modeled directly after avian beak geometry, eliminating sonic tunnel booms.')">
+            <div class="figure-plate-header">
+              <span>SERIES 500 SHINKANSEN</span>
+              <span class="zoom-pill">[+] ZOOM</span>
             </div>
-            <div class="image-container">
-              <span class="card-tag">Engineered Copy</span>
-              <img src="media/bullet_train.jpg" onerror="this.src='https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=800&q=80'" alt="Shinkansen 500 Series">
+            <div class="figure-img-box" id="fig-train">
+              <img src="media/bullet_train.jpg" 
+                   onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=800&q=80';" 
+                   alt="Shinkansen 500-Series Bullet Train" />
             </div>
-            <div class="card-content">
-              <h4>The 15-Meter Nose Cone</h4>
-              <p>Borrowing the bird's profile allowed air to part smoothly, turning explosive tunnel noise into quiet passage.</p>
+            <div class="figure-plate-details">
+              <h4>15-Meter Beak Profile</h4>
+              <p>Area-rule nose cone eliminating explosive pressure wave discharge upon tunnel exits.</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= SLIDE 3 ================= -->
-    <section class="slide" id="slide-3">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span class="pill-badge"><span class="pill-dot" style="background: var(--accent-amber); box-shadow: 0 0 10px var(--accent-amber);"></span> Innovation 02 • Climate Architecture</span>
-        <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-dim); letter-spacing: 0.08em;">03 / 06</span>
-      </div>
-
-      <div class="split-grid-hero">
-        <div class="info-pane">
-          <div>
-            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-amber); font-weight: 700; margin-bottom: 0.4rem;">Cooling Without Air Conditioners</div>
-            <h2 class="slide-heading">Termite Mounds &amp; The Eastgate Centre</h2>
-          </div>
-          <p class="subtitle">
-            In Zimbabwe, outside temperatures fluctuate from cold nights to 40°C afternoons. Yet African termites maintain their mounds at an even 31°C year-round. Architect Mick Pearce applied their chimney ventilation structure to build a commercial complex with zero traditional AC units.
-          </p>
-          <div class="metrics-ribbon">
-            <div class="metric-box">
-              <span class="metric-value" style="color: var(--accent-amber);">-90%</span>
-              <span class="metric-label">Cooling Power</span>
-            </div>
-            <div class="metric-box">
-              <span class="metric-value" style="color: var(--accent-amber);">$3.5M</span>
-              <span class="metric-label">Upfront Savings</span>
-            </div>
-            <div class="metric-box">
-              <span class="metric-value" style="color: var(--accent-amber);">24°C</span>
-              <span class="metric-label">Steady Room Temp</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="comparison-cards-row">
-          <div class="spec-card" data-zoom-img="media/termite_mound.jpg" data-zoom-title="Termite Mound Diagram: Drawing cold nighttime air into base vents and expelling heat through top chimneys.">
-            <div class="zoom-hint">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </div>
-            <div class="image-container">
-              <span class="card-tag">Living Structure</span>
-              <img class="fit-contain" src="media/termite_mound.jpg" onerror="this.src='https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80'" alt="Termite Mound Chimney">
-            </div>
-            <div class="card-content">
-              <h4>Self-Regulating Vents</h4>
-              <p>Soil tunnels act like lungs—taking in crisp night air and releasing heat as internal temperatures rise.</p>
-            </div>
-          </div>
-
-          <div class="spec-card" data-zoom-img="media/eastgate_centre.jpg" data-zoom-title="The Eastgate Centre, Harare: Concrete slabs store cold nocturnal air to keep offices comfortable.">
-            <div class="zoom-hint">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </div>
-            <div class="image-container">
-              <span class="card-tag">Harare, Zimbabwe</span>
-              <img class="fit-contain" src="media/eastgate_centre.jpg" onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80'" alt="Eastgate Centre Building">
-            </div>
-            <div class="card-content">
-              <h4>The Eastgate Centre</h4>
-              <p>Fans pull night air into concrete floors, keeping offices comfortable with zero conventional chillers.</p>
-            </div>
-          </div>
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- ================= SLIDE 4 ================= -->
-    <section class="slide" id="slide-4">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span class="pill-badge"><span class="pill-dot" style="background: var(--accent-emerald); box-shadow: 0 0 10px var(--accent-emerald);"></span> Innovation 03 • Smart Surfaces</span>
-        <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-dim); letter-spacing: 0.08em;">04 / 06</span>
-      </div>
-
-      <div class="split-grid-hero">
-        <div class="info-pane">
-          <div>
-            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-emerald); font-weight: 700; margin-bottom: 0.4rem;">Self-Cleaning Surfaces</div>
-            <h2 class="slide-heading">The Lotus Leaf &amp; Clean Materials</h2>
-          </div>
-          <p class="subtitle">
-            Lotus leaves grow in muddy waters, yet remain spotless. The leaf relies on microscopic waxy bumps that keep droplets floating on air pockets. As water rolls away, it picks up dirt particles without needing chemical soap.
-          </p>
-          <div class="metrics-ribbon">
-            <div class="metric-box">
-              <span class="metric-value" style="color: var(--accent-emerald);">&gt;150°</span>
-              <span class="metric-label">Contact Angle</span>
-            </div>
-            <div class="metric-box">
-              <span class="metric-value" style="color: var(--accent-emerald);">Zero</span>
-              <span class="metric-label">Chemical Soaps</span>
-            </div>
-            <div class="metric-box">
-              <span class="metric-value" style="color: var(--accent-emerald);">99.8%</span>
-              <span class="metric-label">Dirt Repelled</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="comparison-cards-row">
-          <div class="spec-card" data-zoom-img="media/lotus_leaf.jpg" data-zoom-title="The Lotus Leaf: Microscopic pillars force water into beads so dirt cannot adhere.">
-            <div class="zoom-hint">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </div>
-            <div class="image-container">
-              <span class="card-tag">Plant Surface</span>
-              <img src="media/lotus_leaf.jpg" onerror="this.src='https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8?auto=format&fit=crop&w=800&q=80'" alt="Lotus Leaf Water Droplet">
-            </div>
-            <div class="card-content">
-              <h4>The Lotus Effect</h4>
-              <p>Microscopic peaks trap air pockets so water cannot spread out or stick to the cuticle.</p>
-            </div>
-          </div>
-
-          <div class="spec-card" data-zoom-img="media/superhydrophobic.jpg" data-zoom-title="Modern Applications: Hydrophobic coatings on solar panels and hospital instruments.">
-            <div class="zoom-hint">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </div>
-            <div class="image-container">
-              <span class="card-tag">Modern Application</span>
-              <img src="media/superhydrophobic.jpg" onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80'" alt="Nanotech self cleaning surface">
-            </div>
-            <div class="card-content">
-              <h4>Industrial Applications</h4>
-              <p>Self-cleaning solar panels, building glass, and bacteria-resistant medical equipment.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= SLIDE 5 ================= -->
-    <section class="slide" id="slide-5">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span class="pill-badge"><span class="pill-dot"></span> Three Practical Lessons</span>
-        <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-dim); letter-spacing: 0.08em;">05 / 06</span>
-      </div>
-
-      <div style="display: flex; flex-direction: column; gap: 2rem; margin: auto 0;">
+    <!-- ================= SLIDE 3: TERMITE MOUNDS & THE EASTGATE CENTRE ================= -->
+    <section class="slide" data-slide="3" aria-label="Slide 3: Termite Mounds and The Eastgate Centre">
+      <div class="slide-body grid-asymmetric">
         <div>
-          <h2 class="slide-heading" style="font-size: 2.8rem;">How Nature Solves Engineering</h2>
-          <p class="subtitle">Instead of using brute force, effective engineering copies how nature works with physical constraints.</p>
-        </div>
+          <span class="editorial-kicker">THERMODYNAMICS &amp; THERMAL MASS</span>
+          <h2 class="editorial-title">
+            The Chimney That <em>Breathes.</em>
+          </h2>
+          <p class="editorial-lead">
+            Harare experiences wide diurnal temperature swings, from chilly nights to 40°C heat. Traditional active refrigeration for a 31,000 m² office complex would require enormous electrical infrastructure. Architect Mick Pearce, collaborating with Arup engineers, drew inspiration from African termite mounds. By using concrete floor slabs to absorb heat during the day and flushing them with night air using low-energy fans, the Eastgate Centre maintains comfortable conditions with drastically reduced cooling energy.
+          </p>
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
-          <div class="spec-card" style="padding: 2rem; cursor: default;">
-            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 0.4rem;">01</div>
-            <h4 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.4rem;">Shape Over Engine Power</h4>
-            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-              Aerodynamic geometry handles fluid resistance far more efficiently than adding more engine horsepower.
-            </p>
+          <div class="spec-strip">
+            <div class="spec-cell">
+              <div class="spec-value sage">~35%</div>
+              <div class="spec-label">Energy of Typical Harare Building</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-value ochre">$3.5M</div>
+              <div class="spec-label">Saved Upfront by Omitting Chiller Plant</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-value">21°–25°C</div>
+              <div class="spec-label">Interior Thermal Stability Year-Round</div>
+            </div>
           </div>
-
-          <div class="spec-card" style="padding: 2rem; cursor: default;">
-            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-amber); margin-bottom: 0.4rem;">02</div>
-            <h4 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.4rem;">Passive Climate Design</h4>
-            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-              Using natural temperature differentials and thermal mass removes the need for round-the-clock compressor use.
-            </p>
-          </div>
-
-          <div class="spec-card" style="padding: 2rem; cursor: default;">
-            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-emerald); margin-bottom: 0.4rem;">03</div>
-            <h4 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.4rem;">Microscopic Texture</h4>
-            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-              Physical surface patterns reject dirt and bacteria passively without relying on toxic chemicals.
-            </p>
+          <div class="citation-note">
+            Source: Pearce, M. (2001). <em>Passively Cooled Building, Harare, Zimbabwe</em>. Architectural Design, 71(6).
           </div>
         </div>
-      </div>
 
-      <div style="font-size: 0.85rem; color: var(--text-dim); text-align: center;">
-        "Look deep into nature, and then you will understand everything better." — Albert Einstein
+        <div class="media-pair-stage">
+          <figure class="figure-plate" onclick="openLightbox('fig-termite', 'NATURAL ANALOG — MACROTERMES MOUND CONVECTIVE CHIMNEYS', 'Porous mound walls buffer environmental heat and facilitate colony gas exchange via thermal buoyancy.')">
+            <div class="figure-plate-header">
+              <span>TERMITE MOUND SECTION</span>
+              <span class="zoom-pill">[+] ZOOM</span>
+            </div>
+            <div class="figure-img-box" id="fig-termite">
+              <img class="contain-fit" src="media/termite_mound.jpg" 
+                   onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80';" 
+                   alt="Termite mound thermal ventilation diagram" />
+            </div>
+            <div class="figure-plate-details">
+              <h4>Convective Airflow</h4>
+              <p>Porous earthen flues buffer external heat swings and maintain vital colony respiration.</p>
+            </div>
+          </figure>
+
+          <figure class="figure-plate" onclick="openLightbox('fig-eastgate', 'BUILT ARCHITECTURE — EASTGATE CENTRE HARARE', 'Passive concrete thermal storage slabs and 48 rooftop chimneys operating without traditional chillers.')">
+            <div class="figure-plate-header">
+              <span>EASTGATE CENTRE</span>
+              <span class="zoom-pill">[+] ZOOM</span>
+            </div>
+            <div class="figure-img-box" id="fig-eastgate">
+              <img class="contain-fit" src="media/eastgate_centre.jpg" 
+                   onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" 
+                   alt="Eastgate Centre building in Harare Zimbabwe" />
+            </div>
+            <div class="figure-plate-details">
+              <h4>48 Masonry Chimneys</h4>
+              <p>Masonry heat sinks and convective chimney stacks operating without traditional chillers.</p>
+            </div>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <!-- ================= SLIDE 6 (OUTRO): MEME TEXT FULLY PRESERVED ================= -->
-    <section class="slide" id="slide-6">
-      <div class="outro-container">
-        <!-- Top Calligraphy Title -->
-        <h2 class="outro-title">Thanks for Watching!</h2>
+    <!-- ================= SLIDE 4: THE LOTUS TOPOGRAPHY (BOTANICAL SCIENCE EXHIBIT) ================= -->
+    <section class="slide" data-slide="4" aria-label="Slide 4: Material Physics &amp; Lotus Topography">
+      <div class="slide-body grid-asymmetric">
+        <div>
+          <span class="editorial-kicker">INTERFACIAL BOTANY &amp; TOPOGRAPHY</span>
+          <h2 class="editorial-title">
+            The Geometry of <em>Purity.</em>
+          </h2>
+          <p class="editorial-lead">
+            The sacred lotus (<em>Nelumbo nucifera</em>) emerges spotless from turbid waters without chemical detergents. In 1997, botanists Wilhelm Barthlott and Christoph Neinhuis demonstrated that self-cleaning is governed by organic morphology rather than artificial smoothness: epidermal papillae coated with hydrophobic epicuticular wax crystals.
+          </p>
+          <p class="editorial-lead" style="margin-bottom: 0.8rem;">
+            Water droplets rest atop microscopic air cushions in the <strong>Cassie-Baxter regime</strong>, reducing solid-liquid contact to under <strong>1%</strong>. At tilts below 2°, water beads roll off under gravity, gathering dirt particles through natural surface tension.
+          </p>
 
-        <!-- Centered Tony Stark Meme Card: FULL TEXT VISIBLE -->
-        <div class="outro-center-display">
-          <div class="featured-outro-card" data-zoom-img="media/outro_bottom_1.jpg" data-zoom-title="The End of My Presentation — Any Questions?">
-            <img src="media/outro_bottom_1.jpg" onerror="this.src='https://i.imgflip.com/4/30b1gx.jpg'" alt="Tony Stark The End of My Presentation Any Questions Meme">
+          <div class="spec-strip">
+            <div class="spec-cell">
+              <div class="spec-value ochre">&gt; 150°</div>
+              <div class="spec-label">Static Contact Angle θc (Superhydrophobic)</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-value sage">&lt; 2°</div>
+              <div class="spec-label">Roll-Off Tilt Angle (Hysteresis &lt; 5°)</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-value">0.6%</div>
+              <div class="spec-label">Solid-Liquid Contact Area Fraction (f₁)</div>
+            </div>
+          </div>
+          <div class="citation-note">
+            Source: Barthlott, W., &amp; Neinhuis, C. (1997). <em>Purity of the sacred lotus</em>. Planta, 202(1).
           </div>
         </div>
 
-        <!-- Bottom Right Signature -->
-        <div class="signature-container">
-          <div class="signature-text">
-            ~ By Nimisha
-            <span class="signature-underline"></span>
+        <!-- Art-Directed Botanical Study Exhibit -->
+        <figure class="figure-plate" onclick="openLightbox('fig-lotus-vector', 'FIG 4.1 — NELUMBO NUCIFERA BOTANICAL INTERFACE STUDY', 'Organic epidermal papillae mounds and epicuticular wax crystals suspending spherical water droplets in Cassie-Baxter regime.')">
+          <div class="figure-plate-header">
+            <span>BOTANICAL MONOGRAPH // NELUMBO NUCIFERA</span>
+            <span class="zoom-pill">[+] ZOOM</span>
+          </div>
+          
+          <div class="botanical-monograph-stage" id="fig-lotus-vector">
+            <svg viewBox="0 0 540 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="organicDrop" cx="38%" cy="32%" r="68%">
+                  <stop offset="0%" stop-color="rgba(214, 235, 222, 0.8)"/>
+                  <stop offset="45%" stop-color="rgba(110, 139, 116, 0.45)"/>
+                  <stop offset="85%" stop-color="rgba(35, 60, 42, 0.6)"/>
+                  <stop offset="100%" stop-color="rgba(15, 25, 18, 0.75)"/>
+                </radialGradient>
+                <linearGradient id="leafTissue" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#2D3B30"/>
+                  <stop offset="60%" stop-color="#1E2820"/>
+                  <stop offset="100%" stop-color="#111612"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Subtle Background Botanical Grid -->
+              <line x1="40" y1="230" x2="500" y2="230" stroke="rgba(244, 241, 234, 0.12)" stroke-dasharray="3 3"/>
+
+              <!-- Soft Leaf Epidermal Tissue Body -->
+              <path d="M 30 290 Q 90 288, 160 286 T 320 286 T 510 290 L 510 320 L 30 320 Z" fill="url(#leafTissue)"/>
+              <line x1="30" y1="290" x2="510" y2="290" stroke="#485D4E" stroke-width="1"/>
+
+              <!-- Organic Curving Papillae Mounds (Gentle Biological Wave) -->
+              <path d="M 30 290 
+                       C 45 285, 55 240, 75 240 C 95 240, 105 288, 125 288 
+                       C 145 288, 155 238, 175 238 C 195 238, 205 287, 225 287 
+                       C 245 287, 255 236, 275 236 C 295 236, 305 287, 325 287 
+                       C 345 287, 355 238, 375 238 C 395 238, 405 288, 425 288 
+                       C 445 288, 455 242, 475 242 C 495 242, 500 285, 510 290" 
+                    fill="#243026" stroke="#6E8B74" stroke-width="2" stroke-linecap="round"/>
+
+              <!-- Organic Epicuticular Wax Nano-Hairlets / Crystals -->
+              <g stroke="#D4A359" stroke-width="1.2" stroke-linecap="round" opacity="0.85">
+                <!-- Mound 1 -->
+                <line x1="72" y1="238" x2="70" y2="230"/><line x1="75" y1="236" x2="75" y2="228"/><line x1="78" y1="238" x2="80" y2="230"/>
+                <!-- Mound 2 -->
+                <line x1="172" y1="236" x2="170" y2="228"/><line x1="175" y1="234" x2="175" y2="226"/><line x1="178" y1="236" x2="180" y2="228"/>
+                <!-- Mound 3 (Direct Under Droplet) -->
+                <line x1="272" y1="234" x2="270" y2="226"/><line x1="275" y1="232" x2="275" y2="224"/><line x1="278" y1="234" x2="280" y2="226"/>
+                <!-- Mound 4 -->
+                <line x1="372" y1="236" x2="370" y2="228"/><line x1="375" y1="234" x2="375" y2="226"/><line x1="378" y1="236" x2="380" y2="228"/>
+                <!-- Mound 5 -->
+                <line x1="472" y1="240" x2="470" y2="232"/><line x1="475" y1="238" x2="475" y2="230"/><line x1="478" y1="240" x2="480" y2="232"/>
+              </g>
+
+              <!-- Trapped Micro Air Pockets Beneath Meniscus -->
+              <text x="275" y="272" fill="#D4A359" font-family="JetBrains Mono" font-size="9.5" text-anchor="middle" letter-spacing="1">AIR POCKETS (CASSIE-BAXTER REGIME)</text>
+              <path d="M 220 256 Q 248 248 275 248 Q 302 248 330 256" stroke="rgba(212,163,89,0.4)" stroke-dasharray="3 2" fill="none"/>
+
+              <!-- Spherical Fluid Droplet with Curving Surface Tension -->
+              <ellipse cx="275" cy="148" rx="82" ry="79" fill="url(#organicDrop)" stroke="rgba(244, 241, 234, 0.45)" stroke-width="1.8"/>
+              <!-- Droplet Specular Reflection Highlight -->
+              <ellipse cx="250" cy="116" rx="24" ry="14" transform="rotate(-28 250 116)" fill="rgba(255,255,255,0.45)" filter="blur(2px)"/>
+
+              <!-- Natural Particle Being Lifted via Capillary Adhesion -->
+              <circle cx="340" cy="188" r="9" fill="#C85A32" stroke="#F4F1EA" stroke-width="1.2"/>
+              <text x="358" y="192" fill="#D4A359" font-family="JetBrains Mono" font-size="9">MINERAL PARTICLE</text>
+              <line x1="334" y1="184" x2="320" y2="176" stroke="#D4A359" stroke-width="1" stroke-dasharray="2 2"/>
+
+              <!-- Contact Angle Indication Curve -->
+              <text x="275" y="152" fill="#F4F1EA" font-family="Cormorant Garamond" font-size="19" font-style="italic" text-anchor="middle">θc ≈ 162°</text>
+              <text x="275" y="168" fill="#9A968E" font-family="JetBrains Mono" font-size="8.5" text-anchor="middle">SUPERHYDROPHOBIC</text>
+
+              <!-- Annotation Callout -->
+              <text x="40" y="308" fill="#66635B" font-family="JetBrains Mono" font-size="9">PAPILLAE (10–20 μm) + HYDROPHOBIC WAX (100 nm)</text>
+            </svg>
+          </div>
+
+          <div class="figure-plate-details">
+            <h4>Botanical Epicuticular Topography</h4>
+            <p>Dual-scale epidermal papillae suspend droplets above air cushions, rolling away mineral particulates without chemical solvents.</p>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 5: THE SHARKSKIN PARADIGM ================= -->
+    <section class="slide" data-slide="5" aria-label="Slide 5: The Sharkskin Paradigm">
+      <div class="slide-body grid-asymmetric">
+        <div>
+          <span class="editorial-kicker">MECHANOBIOLOGY &amp; ANTIMICROBIAL SURFACES</span>
+          <h2 class="editorial-title">
+            The Sharkskin <em>Paradox.</em>
+          </h2>
+          <p class="editorial-lead">
+            Fast-swimming sharks resist biofouling in warm marine environments. In 2002, materials scientist Dr. Anthony Brennan investigated their dermal denticles—microscopic tooth-like scales featuring ribbed diamond patterns. He discovered this texture inhibits initial bacterial attachment through physical surface energy, reducing colonization of pathogens such as <em>S. aureus</em> and <em>E. coli</em> by 80–90% in lab tests. Crucially, it does not poison microbes; it is anti-adhesive, avoiding selective pressure for antimicrobial resistance.
+          </p>
+
+          <div class="spec-strip">
+            <div class="spec-cell">
+              <div class="spec-value sage">80–90%</div>
+              <div class="spec-label">Reduction in Bacterial Adhesion (In Vitro)</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-value ochre">2 μm × 3 μm</div>
+              <div class="spec-label">Repeating Diamond Riblet Geometry</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-value rust">Zero AMR</div>
+              <div class="spec-label">Non-Biocidal / No Drug Resistance Risk</div>
+            </div>
+          </div>
+          <div class="citation-note">
+            Source: Brennan, A. B., et al. (2007). <em>Engineered Surface Microtopography</em>. Biofouling, 23(4).
+          </div>
+        </div>
+
+        <div class="media-pair-stage">
+          <figure class="figure-plate" onclick="openLightbox('fig-shark', 'MARINE SPECIMEN — GALEOCERDO CUVIER DERMAL DENTICLES', 'Microscopic tooth-like scales that generate localized fluid shear, inhibiting microbial bio-attachment.')">
+            <div class="figure-plate-header">
+              <span>DERMAL DENTICLES</span>
+              <span class="zoom-pill">[+] ZOOM</span>
+            </div>
+            <div class="figure-img-box" id="fig-shark">
+              <img src="media/shark_skin.jpg" 
+                   onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1560275619-4662e36fa65c?auto=format&fit=crop&w=800&q=80';" 
+                   alt="Shark skin dermal denticles under magnification" />
+            </div>
+            <div class="figure-plate-details">
+              <h4>Dermal Denticles</h4>
+              <p>Micro-grooves generating localized fluid shear that prevents stable bacterial colonization.</p>
+            </div>
+          </figure>
+
+          <figure class="figure-plate" onclick="openLightbox('fig-sharklet', 'CLINICAL SURFACE — SHARKLET AF™ 2μm TOPOGRAPHY', 'Engineered hospital surface film inhibiting MRSA biofilm formation purely via mechanical membrane strain.')">
+            <div class="figure-plate-header">
+              <span>SHARKLET AF™ FILM</span>
+              <span class="zoom-pill">[+] ZOOM</span>
+            </div>
+            <div class="figure-img-box" id="fig-sharklet">
+              <img src="media/superhydrophobic.jpg" 
+                   onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80';" 
+                   alt="Medical touch surface with antimicrobial microtopography" />
+            </div>
+            <div class="figure-plate-details">
+              <h4>Medical Microtopography</h4>
+              <p>Hospital contact films engineered to suppress biofilm formation without antibiotics.</p>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 6: BRUTE FORCE VS. EVOLUTIONARY FORM ================= -->
+    <section class="slide" data-slide="6" aria-label="Slide 6: Comparative Matrix">
+      <div class="slide-body grid-full">
+        <div>
+          <span class="editorial-kicker">COMPARATIVE SYNTHESIS MATRIX</span>
+          <h2 class="editorial-title" style="margin-bottom: 1.15rem;">
+            The Paradigm Shift: <em>Material Expenditure</em> vs. <em>Information Geometry</em>
+          </h2>
+
+          <div class="matrix-container">
+            <table class="editorial-table">
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Engineering Domain</th>
+                  <th style="width: 35%;">20th-Century Industrial Brute Force</th>
+                  <th style="width: 35%;">3.8-Billion-Year Evolutionary Form</th>
+                  <th style="width: 10%;">Net Delta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="domain-name">Aeroacoustics</span>
+                    <span class="domain-sub">High-Speed Rail Tunnels</span>
+                  </td>
+                  <td>
+                    <span class="brute-tag">HIGH MASS &amp; VELOCITY THROTTLING</span><br/>
+                    Concrete trackside sound walls and speed limits to mitigate piston-effect compression waves.
+                  </td>
+                  <td>
+                    <span class="bio-tag">ALCEDO ATTHIS &amp; BUBO VIRGINIANUS</span><br/>
+                    15-meter rotational parabolic kingfisher nose cone + owl-feather pantograph vortex serrations.
+                  </td>
+                  <td style="font-family: var(--font-mono); color: var(--accent-ochre); font-size: 0.78rem;">
+                    -30% Drag<br/>-15% Power<br/>&lt;70 dBA
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="domain-name">Thermodynamics</span>
+                    <span class="domain-sub">Commercial Building HVAC</span>
+                  </td>
+                  <td>
+                    <span class="brute-tag">VAPOR-COMPRESSION CHILLERS</span><br/>
+                    Sealed glass towers cooled via high-GWP refrigerants and continuous electrical chillers.
+                  </td>
+                  <td>
+                    <span class="bio-tag">MACROTERMES MICHAELSONI</span><br/>
+                    Concrete labyrinth floor slabs absorbing diurnal heat + nocturnal purge via 48 roof chimneys.
+                  </td>
+                  <td style="font-family: var(--font-mono); color: var(--accent-sage); font-size: 0.78rem;">
+                    -90% Energy<br/>$3.5M Saved<br/>21°–25°C
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="domain-name">Interfacial Physics</span>
+                    <span class="domain-sub">Surface Contamination</span>
+                  </td>
+                  <td>
+                    <span class="brute-tag">FLUOROPOLYMERS &amp; SURFACTANTS</span><br/>
+                    Persistent PFAS "forever chemicals", caustic detergents, and high-pressure water washing.
+                  </td>
+                  <td>
+                    <span class="bio-tag">NELUMBO NUCIFERA (CASSIE-BAXTER)</span><br/>
+                    Hierarchical 10–20 μm papillae + 100 nm wax crystals trapping 99.4% air cushions; water rolls off dirt.
+                  </td>
+                  <td style="font-family: var(--font-mono); color: var(--accent-ochre); font-size: 0.78rem;">
+                    θc &gt; 150°<br/>&lt;2° Roll<br/>0% PFAS
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="domain-name">Mechanobiology</span>
+                    <span class="domain-sub">Infection Control</span>
+                  </td>
+                  <td>
+                    <span class="brute-tag">BIOCIDES &amp; CHEMICAL LEACHING</span><br/>
+                    Triclosan and silver-ion coatings that leach toxins and breed drug-resistant superbugs.
+                  </td>
+                  <td>
+                    <span class="bio-tag">SHARK DERMAL DENTICLES (SHARKLET)</span><br/>
+                    2 μm × 3 μm diamond riblet topography inducing mechanical stress that prevents biofilm anchorage.
+                  </td>
+                  <td style="font-family: var(--font-mono); color: var(--accent-sage); font-size: 0.78rem;">
+                    -85% MRSA<br/>0% Leaching<br/>Zero AMR
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </section>
 
-  </div>
+    <!-- ================= SLIDE 7 (FORMERLY SLIDE 8): OUTRO WITH VECTOR PLATE & NIMISHA'S SIGNATURE ================= -->
+    <section class="slide" data-slide="7" aria-label="Slide 7: Conclusion and Open Floor Q&amp;A">
+      <div class="slide-body grid-balanced">
+        <div>
+          <span class="editorial-kicker">CLOSING SYNTHESIS // CENTRAL UNIVERSITY OF SOUTH BIHAR</span>
+          <h2 class="editorial-title">
+            Nature has already solved the engineering crises of the 21st century.
+          </h2>
+          <p class="editorial-lead">
+            Our task as scientists, engineers, and scholars is no longer to conquer nature through thermodynamic force—but to <strong>read its geometry with humility</strong>, and to guard its evolutionary blueprints for the public good.
+          </p>
 
-  <audio id="outro-sound" src="media/outro.mp3" preload="auto"></audio>
+          <div class="spec-strip">
+            <div class="spec-cell">
+              <div class="spec-label" style="color: var(--accent-ochre); margin-bottom: 0.2rem;">SCIENTIFIC CORPUS</div>
+              <div style="font-size: 0.78rem; color: var(--text-stone); line-height: 1.45;">
+                Benyus (1997) • Nakatsu (1998) • Pearce (1996) • Barthlott &amp; Neinhuis (1997) • Brennan et al. (2007)
+              </div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label" style="color: var(--accent-sage); margin-bottom: 0.2rem;">INTERDISCIPLINARY FORUM</div>
+              <div style="font-size: 0.78rem; color: var(--text-stone); line-height: 1.45;">
+                Department of English &amp; Academic Keynote Series • Central University of South Bihar
+              </div>
+            </div>
+          </div>
 
-  <!-- Apple Lightbox Zoom Modal -->
-  <div class="image-modal-backdrop" id="image-modal">
-    <div class="modal-frame" id="modal-frame">
-      <div class="modal-close-hint">
-        <span>Click anywhere or press Esc to close</span>
+          <div class="signature-block">
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.25rem;">
+                CENTRAL UNIVERSITY OF SOUTH BIHAR
+              </div>
+              <span class="nimisha-signature">~ By Nimisha</span>
+            </div>
+
+            <button class="audio-badge-btn" onclick="replayOutroChord()" title="Replay Harmonic Chord">
+              <span>♪ REPLAY CHIME</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Side: Clean Monochrome Vector Plate of Tony Stark -->
+        <figure class="meme-editorial-frame" onclick="openLightbox('fig-meme-vector', 'FIG 7.1 — THE END OF MY PRESENTATION / ANY QUESTIONS?', 'Keynote concluding vector plate — Open Floor for Faculty & Student Questions at Central University of South Bihar.')">
+          <div class="figure-plate-header">
+            <span>PLATE 7.1 — OPEN FLOOR FOR QUESTIONS</span>
+            <span class="zoom-pill">[+] ZOOM</span>
+          </div>
+
+          <div class="meme-stage" id="fig-meme-vector">
+            <svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="starkSpotlight" cx="50%" cy="44%" r="58%">
+                  <stop offset="0%" stop-color="#3A3834"/>
+                  <stop offset="55%" stop-color="#1A1917"/>
+                  <stop offset="100%" stop-color="#070706"/>
+                </radialGradient>
+                <linearGradient id="suitGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#2A2927"/>
+                  <stop offset="100%" stop-color="#0D0D0C"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Cinematic Desert / Mountain Monochrome Backdrop -->
+              <rect width="640" height="480" fill="url(#starkSpotlight)"/>
+              <polygon points="0,335 95,275 185,310 290,255 410,305 535,260 640,315 640,480 0,480" fill="#121110" opacity="0.85"/>
+              <polygon points="0,360 140,320 265,345 450,310 640,350 640,480 0,480" fill="#0B0B0A"/>
+
+              <!-- Atmospheric Shockwave Ring -->
+              <ellipse cx="320" cy="345" rx="260" ry="26" fill="none" stroke="rgba(244,241,234,0.12)" stroke-width="2"/>
+
+              <!-- Tony Stark Iconic Wide-Outstretched Arms Pose -->
+              <g>
+                <path d="M 55 215 L 235 255 L 255 298 L 68 248 Z" fill="url(#suitGrad)" stroke="#524F49" stroke-width="1.5"/>
+                <path d="M 585 215 L 405 255 L 385 298 L 572 248 Z" fill="url(#suitGrad)" stroke="#524F49" stroke-width="1.5"/>
+
+                <path d="M 55 215 C 38 202, 26 208, 22 222 C 25 236, 45 244, 68 248 Z" fill="#D8D3C8" stroke="#66635B" stroke-width="1.2"/>
+                <path d="M 585 215 C 602 202, 614 208, 618 222 C 615 236, 595 244, 572 248 Z" fill="#D8D3C8" stroke="#66635B" stroke-width="1.2"/>
+
+                <path d="M 235 250 L 405 250 L 382 430 L 258 430 Z" fill="url(#suitGrad)" stroke="#66635B" stroke-width="1.5"/>
+                <polygon points="292,250 348,250 320,338" fill="#EAE5DA"/>
+                <polygon points="313,262 327,262 330,332 320,345 310,332" fill="#C85A32"/>
+                <path d="M 292 250 L 268 305 L 320 338" fill="none" stroke="#8C877E" stroke-width="1.5"/>
+                <path d="M 348 250 L 372 305 L 320 338" fill="none" stroke="#8C877E" stroke-width="1.5"/>
+                <circle cx="320" cy="300" r="10" fill="rgba(244,241,234,0.18)"/>
+
+                <rect x="304" y="222" width="32" height="32" rx="6" fill="#C9C3B8"/>
+                <path d="M 290 165 C 290 138, 350 138, 350 165 L 348 216 C 348 232, 334 240, 320 240 C 306 240, 292 232, 292 216 Z" fill="#DFDAD0" stroke="#524F49" stroke-width="1.5"/>
+                <path d="M 288 172 C 286 140, 310 130, 336 135 C 354 140, 355 158, 351 172 C 342 156, 302 154, 288 172 Z" fill="#1C1B1A"/>
+
+                <!-- Aviator Sunglasses -->
+                <rect x="296" y="176" width="21" height="13" rx="3" fill="#141412" stroke="#D4A359" stroke-width="1.5"/>
+                <rect x="323" y="176" width="21" height="13" rx="3" fill="#141432" stroke="#D4A359" stroke-width="1.5"/>
+                <line x1="317" y1="180" x2="323" y2="180" stroke="#D4A359" stroke-width="1.5"/>
+
+                <!-- Goatee -->
+                <path d="M 307 212 L 333 212 L 330 216 L 310 216 Z" fill="#1C1B1A"/>
+                <path d="M 308 220 L 313 235 L 327 235 L 332 220 L 327 220 L 325 229 L 315 229 L 313 220 Z" fill="#1C1B1A"/>
+              </g>
+
+              <!-- Safe Top & Bottom Impact Typography -->
+              <g font-family="Impact, 'Arial Black', 'Plus Jakarta Sans', sans-serif" font-weight="900" text-anchor="middle" letter-spacing="1.5">
+                <text x="320" y="58" font-size="36" fill="#F4F1EA" stroke="#0B0B0A" stroke-width="6" paint-order="stroke">THE END OF MY PRESENTATION</text>
+                <text x="320" y="446" font-size="42" fill="#F4F1EA" stroke="#0B0B0A" stroke-width="6" paint-order="stroke">ANY QUESTIONS?</text>
+              </g>
+            </svg>
+          </div>
+
+          <figcaption style="font-size: 0.76rem; color: var(--text-stone); border-top: 1px solid var(--rule-hairline); padding-top: 0.5rem; margin-top: 0.5rem; display: flex; justify-content: space-between;">
+            <span>Thank you, Honorable Faculty &amp; Peers — The floor is open for questions.</span>
+            <span style="font-family: var(--font-mono); color: var(--accent-ochre);">VECTOR PLATE</span>
+          </figcaption>
+        </figure>
       </div>
-      <img id="modal-img" src="" alt="Expanded Preview">
-      <div class="modal-caption-pill" id="modal-caption">
-        <span class="pill-dot"></span>
-        <span id="modal-caption-text">Preview</span>
+    </section>
+
+  </main>
+
+  <audio id="outro-sound" src="media/outro.mp3" preload="none"></audio>
+
+  <!-- Minimal Floating Navigation Dock (7 Slides Total) -->
+  <nav class="floating-dock" aria-label="Presentation Navigation">
+    <button class="dock-btn" onclick="prevSlide()" title="Previous Slide (Left Arrow)">
+      <span>&larr;</span>
+    </button>
+    <span class="dock-counter" id="slideCounter">01 / 07</span>
+    <button class="dock-btn" onclick="nextSlide()" title="Next Slide (Right Arrow / Space)">
+      <span>&rarr;</span>
+    </button>
+    <div class="dock-divider"></div>
+    <button class="dock-btn" id="dockNotesBtn" onclick="toggleTeleprompter()" title="Toggle Rehearsal Teleprompter (Press N)">
+      <span>[N] NOTES</span>
+    </button>
+    <div class="dock-divider"></div>
+    <button class="dock-btn" onclick="toggleFullScreen()" title="Toggle Fullscreen (Press F)">
+      <span>[F]</span>
+    </button>
+  </nav>
+
+  <!-- Bilingual Rehearsal Teleprompter Drawer -->
+  <aside class="teleprompter-drawer" id="teleprompterDrawer" aria-label="Speaker Rehearsal Teleprompter">
+    <div class="tp-header">
+      <div class="tp-title-group">
+        <h4>REHEARSAL PROMPTER // NIMISHA</h4>
+        <p id="tpSlideTitle">Slide 01 — The Industrial Blindspot</p>
       </div>
+      <button class="tp-close-btn" onclick="toggleTeleprompter()">ESC / [N]</button>
     </div>
-  </div>
 
-  <!-- Apple Dock Controller -->
-  <div class="dock-container">
-    <button class="dock-btn" id="prev-btn" title="Previous Slide (←)">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
-    </button>
-    <div class="dots-nav" id="dots-container"></div>
-    <button class="dock-btn" id="next-btn" title="Next Slide (→ or Space)">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-    </button>
-    <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2); margin: 0 0.15rem;"></div>
-    <button class="script-toggle-btn" id="notes-btn" title="Toggle Speaker Script (N)">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-      <span>Notes (N)</span>
-    </button>
-  </div>
-
-  <!-- Rehearsal Drawer -->
-  <aside class="speaker-drawer" id="speaker-drawer">
-    <div class="drawer-header">
-      <div>
-        <h3>Speaker Rehearsal Script</h3>
-        <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 600;" id="drawer-slide-indicator">Slide 1 of 6</div>
-      </div>
-      <button class="drawer-close" id="drawer-close-btn">&times;</button>
+    <div class="tp-lang-bar">
+      <button class="lang-pill active" id="langBtnEn" onclick="setTeleprompterLang('en')">
+        ENGLISH (ACADEMIC)
+      </button>
+      <button class="lang-pill" id="langBtnHi" onclick="setTeleprompterLang('hi')">
+        HINGLISH (NATURAL)
+      </button>
     </div>
-    <div class="script-body" id="script-content"></div>
+
+    <div class="tp-content" id="tpScriptBody"></div>
   </aside>
 
+  <!-- Lightbox Modal -->
+  <div class="lightbox-overlay" id="lightboxModal" onclick="handleLightboxBackdrop(event)" role="dialog" aria-modal="true">
+    <div class="lightbox-frame">
+      <div class="lightbox-top">
+        <span id="lightboxTitle">FIGURE INSPECTION PLATE</span>
+        <button class="lightbox-close" onclick="closeLightbox()">CLOSE [ESC]</button>
+      </div>
+      <div class="lightbox-stage" id="lightboxStage"></div>
+      <div class="lightbox-bottom">
+        <span id="lightboxCaption"></span>
+        <span style="font-family: var(--font-mono); color: var(--accent-ochre);">MONOGRAPH DETAIL</span>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const speakerNotes = [
-      {
-        slide: 1,
-        title: "Introduction",
-        cue: "Start calm and confident. Point naturally toward the slide title.",
-        script: `"Good morning everyone. Whenever engineers run into tough physics problems, the usual answer is to spend millions of dollars running computer simulations. But here is the thing: nature has already run trillions of real-world trials across 3.8 billion years of evolution. The organisms alive today aren't just animals—they are the winning designs. Today, we're looking at Biomimicry: how copying nature’s best ideas helps us build smarter technology."`
+    /* Complete Spoken Stage Rehearsal Scripts (7 Slides) */
+    const TELEPROMPTER_DATA = {
+      1: {
+        title: "01 // The Industrial Blindspot",
+        en: `
+          <span class="stage-cue">[STAGE CUE: Stand centered, pause 2 seconds for the room at CUSB to settle, make warm eye contact with the faculty panel.]</span>
+          <p>Good morning, respected Professors and fellow scholars at the Central University of South Bihar. Today, I want to begin with an uncomfortable truth about modern human engineering.</p>
+          <p>For the last two hundred years—since the dawn of the Industrial Revolution—whenever we encountered a physical barrier like aerodynamic drag, extreme heat, or bacterial contamination, our default answer has been what Janine Benyus calls <strong>"Heat, Beat, and Treat."</strong> We burn more fossil fuel, we dial up pressures to thousands of atmospheres, or we synthesize toxic chemicals.</p>
+          <p>Human technology solves 70% of its problems by throwing raw energy and bulk material at them. Nature cannot do that. Living organisms operate under strict solar and ambient constraints, using just six primary elements. Over <strong>3.8 billion years of evolutionary R&amp;D</strong>, biology learned to encode performance into <strong>geometry and information</strong> rather than brute force.</p>
+        `,
+        hi: `
+          <span class="stage-cue">[STAGE CUE: Auditorium mein calm khade hon, 2 second pause lein aur Faculty panel ki taraf confident smile ke saath dekhein.]</span>
+          <p>Good morning, respected Professors aur mere CUSB ke fellow scholars. Aaj main apni presentation ek aise fundamental question se shuru karna chahti hoon jo hum sabke discipline ko touch karta hai.</p>
+          <p>Pichle do sau saalon mein—Industrial Revolution ke baad se—jab bhi human engineering ke saamne koi physical challenge aaya, jaise aerodynamic drag, extreme heat, ya bacterial infection, humara default answer raha hai <strong>"Brute Force"</strong>. Yaani aur zyada fuel jalao, 1400 degree temperature lagao, ya toxic chemicals synthesize karo. Isko Janine Benyus kehti hain: <em>"Heat, Beat, and Treat."</em></p>
+          <p>Human industry apni 70% problems raw energy kharch karke solve karti hai. Lekin Nature ke paas blast furnace nahi hai! Living organisms normal room temperature par kaam karte hain. <strong>3.8 billion years ke evolutionary R&amp;D</strong> mein nature ne seekha hai ki energy bahaane ke bajaye <strong>micro-geometry aur shape</strong> mein intelligence encode karo.</p>
+        `
       },
-      {
-        slide: 2,
-        title: "Innovation 01: Bullet Train",
-        cue: "Click on the Kingfisher picture to expand it for the audience.",
-        script: `"Our first example starts in Japan. Back in the 1990s, the famous Shinkansen bullet train could easily reach 300 km/h, but it had a loud problem: every time it raced out of narrow tunnels, air pressure built up and set off a deafening sonic boom. The chief engineer happened to be an avid birdwatcher. He thought: 'Is there any creature that moves between two totally different densities without making a disturbance?' That led him straight to the Kingfisher, which dives from thin air into thick water without making a splash. By redesigning the train's nose after the bird's beak, the sonic boom completely disappeared. Even better, the train became 10% faster and used 15% less power."`
+      2: {
+        title: "02 // Kingfisher & Shinkansen 500-Series",
+        en: `
+          <span class="stage-cue">[STAGE CUE: Advance to Slide 2. Adopt a crisp, storytelling cadence.]</span>
+          <p>Our first empirical proof comes from West Japan Railway in the 1990s. Their Shinkansen bullet trains had reached 300 kilometers per hour, but they hit a literal wall of physics inside narrow mountain tunnels.</p>
+          <p>When a conventional rounded train nose enters a tunnel at 300 km/h, it acts like a piston inside a syringe. It compresses the air ahead of it into a shockwave that travels at the speed of sound and explodes out the tunnel exit as a <strong>90-decibel sonic boom</strong>—shaking homes 400 meters away and violating Japan's strict 75-decibel environmental law.</p>
+          <p>Instead of slowing the train down, Chief Engineer <strong>Eiji Nakatsu</strong>—who happened to be an avid birdwatcher—studied the Kingfisher. When a kingfisher dives from low-density air into water that is 800 times denser, it barely makes a splash. By modeling the Shinkansen 500-series nose into a <strong>15-meter rotational parabolic kingfisher beak</strong>, Nakatsu cut air resistance by 30%, reduced electricity use by 15%, and silenced the tunnel boom below 70 decibels.</p>
+        `,
+        hi: `
+          <span class="stage-cue">[STAGE CUE: Slide 2 par aayein. Storytelling tone rakhein.]</span>
+          <p>Iska sabse pehla aur iconic engineering proof humein milta hai 1990s ke Japan mein. JR West ki Shinkansen bullet train 300 km/h ki speed touch kar chuki thi, lekin unke saamne ek ajeeb acoustic problem aa gayi—<strong>"Tunnel Boom."</strong></p>
+          <p>Jab ek normal gol nose waali train 300 km/h par narrow mountain tunnel mein ghusti thi, toh woh syringe ke piston ki tarah hawa ko compress karti thi. Tunnel ke doosre end par yeh pressure wave ek <strong>90-decibel ke sonic boom</strong> ki tarah phat-ti thi—jo Japan ke strict 75 dB environmental law ke khilaaf tha.</p>
+          <p>Chief Engineer <strong>Eiji Nakatsu</strong>—jo khud ek passionate birdwatcher the—unhone notice kiya ki <strong>Kingfisher bird</strong> jab hawa se 800 guna dense paani mein dive karti hai, toh zero splash hota hai. Unhone train ke aage ek <strong>15-meter lamba Kingfisher beak profile</strong> design kiya. Result? Air resistance 30% kam ho gaya, electricity 15% bachi, aur sonic boom 70 decibels ke statutory limit se neeche aa gaya.</p>
+        `
       },
-      {
-        slide: 3,
-        title: "Innovation 02: Architecture",
-        cue: "Click on the termite mound cross-section to enlarge the diagram.",
-        script: `"Next, let’s talk about keeping buildings cool. In Harare, Zimbabwe, temperatures swing from cold nights to blistering 40-degree heat during the day. Air-conditioning a large office center there normally costs a fortune. But architect Mick Pearce took inspiration from termite mounds. Despite burning heat, African termites keep their underground fungus farms at a steady 31 degrees Celsius all year. They do this by opening tiny vents at the bottom to draw in cool nighttime air, while warm air naturally vents out tall chimneys during the day. Pearce applied this exact principle to the Eastgate Centre. The building has zero traditional chillers, yet stays comfortable all day—saving 90% on energy costs."`
+      3: {
+        title: "03 // Termite Mounds & The Eastgate Centre",
+        en: `
+          <span class="stage-cue">[STAGE CUE: Transition to Architecture. Slow down slightly on the thermodynamic numbers.]</span>
+          <p>From fluid dynamics, let us move to thermodynamics and civil architecture. In 1996, architect <strong>Mick Pearce</strong> and Arup Engineers were commissioned to build the Eastgate Centre—a massive 31,600 square-meter commercial complex in Harare, Zimbabwe.</p>
+          <p>Harare experiences extreme diurnal temperature swings: scorching 35°C days and chilly 14°C nights. A standard glass office tower would require a massive, multi-million-dollar mechanical air-conditioning plant. Instead, Pearce looked at the savanna mounds of <em>Macrotermes michaelseni</em>.</p>
+          <p>Termites farm a delicate fungus underground that requires a strict <strong>30.5 degrees Celsius</strong>. They regulate this through porous vertical flues that harness solar buoyancy and wind. Copying this logic, Eastgate has zero conventional AC chillers. Cool night air is drawn in at the base, flows through hollow concrete floor labyrinths to chill the building's thermal mass overnight, and rises out through 48 masonry chimneys during the day. It uses <strong>roughly 35% of the energy</strong> of conventional air-conditioned towers and saved 3.5 million dollars upfront.</p>
+        `,
+        hi: `
+          <span class="stage-cue">[STAGE CUE: Slide 3 par aayein. Numbers bolte waqt deliberate pause lein.]</span>
+          <p>Trains ke baad ab aate hain Architecture aur Thermodynamics par. 1996 mein Zimbabwe ke capital Harare mein architect <strong>Mick Pearce</strong> ko Eastgate Centre design karna tha—ek 31,000 square-meter ka huge shopping aur office complex.</p>
+          <p>Harare ka climate bada tricky hai: din mein 35 degree garmi, aur raat ko 14 degree thand. Normal building mein croreon rupaye ke heavy HVAC chillers lagte. Lekin Mick Pearce ne local <strong>Termite Mounds</strong> ko study kiya.</p>
+          <p>Termites underground fungus gardens ka temperature stable rakhti hain natural convective airflow se. Eastgate Centre ne bilkul yahi kiya: raat ki thandi hawa building ke neeche se andar aati hai, hollow concrete floors ko thanda karti hai, aur din bhar ki garmi <strong>48 rooftop masonry chimneys</strong> se apne aap upar nikal jaati hai. Bina kisi conventional AC chiller ke, yeh building aam buildings ke muqable lagbhag <strong>35% energy</strong> use karti hai aur upfront $3.5 Million bacha chuki hai.</p>
+        `
       },
-      {
-        slide: 4,
-        title: "Innovation 03: Lotus Leaf",
-        cue: "Click on the lotus droplet picture to show the beads.",
-        script: `"Our third innovation is the lotus leaf. In Indian culture, the lotus has always symbolized purity because it rises out of muddy water completely clean. When botanists examined the leaf under high-power microscopes, they realized it wasn't coated in oils. Instead, it’s covered in billions of microscopic waxy bumps that trap air pockets. Water droplets can’t flatten out; they roll right off as beads, picking up dirt along the way. Today, this 'Lotus Effect' gives us self-cleaning solar panels, skyscraper windows that never need washing, and germ-resistant medical tools that rinse clean in seconds."`
+      4: {
+        title: "04 // The Lotus Topography",
+        en: `
+          <span class="stage-cue">[STAGE CUE: Point to the botanical monograph illustration in Figure 4.1.]</span>
+          <p>Now let us zoom down to the nanometer scale of interfacial botany. Why does <em>Nelumbo nucifera</em>—the sacred lotus—emerge spotless from muddy ponds without chemical detergents?</p>
+          <p>In 1997, botanists <strong>Wilhelm Barthlott and Christoph Neinhuis</strong> used scanning electron microscopy to prove that the leaf surface is sculpted with organic micro-scale papillae overlaid with hydrophobic epicuticular wax crystals.</p>
+          <p>Water droplets balance on trapped pockets of air in what is known as the <strong>Cassie-Baxter regime</strong>, touching only <strong>0.6% solid surface</strong>! With a contact angle above 150 degrees, the slightest 2-degree tilt causes the water bead to roll off like a sphere—picking up dirt particles along the way because dirt adheres more strongly to water than to the waxy peaks.</p>
+        `,
+        hi: `
+          <span class="stage-cue">[STAGE CUE: Slide 4 par botanical monograph study ki taraf dhyan dilayein.]</span>
+          <p>Ab hum zoom-in karte hain <strong>nanometers aur interfacial physics</strong> ke scale par. Humare culture mein kamal ke phool ko purity ka symbol maana gaya hai kyunki woh keechad mein rehkar bhi bilkul saaf rehta hai. Par iske peeche ki science kya hai?</p>
+          <p>1997 mein botanists <strong>Barthlott aur Neinhuis</strong> ne Electron Microscope ke neeche dekha ki Lotus leaf par 10-micron ke micro-bumps hote hain aur unke upar 100-nanometer ke wax crystals.</p>
+          <p>Is dual-roughness ki wajah se paani grooves mein ghusne ke bajaye hawa ke cushions par tairta hai—jisko physics mein <strong>Cassie-Baxter Regime</strong> kehte hain. Paani sirf <strong>0.6% surface ko touch karta hai</strong>! Contact angle 150 degree se zyada hota hai, aur boond roll karte hue saari mitti ko apne saath baha le jaati hai—zero chemical soap!</p>
+        `
       },
-      {
-        slide: 5,
-        title: "Lessons",
-        cue: "Speak slowly and clearly to let the takeaways land.",
-        script: `"Looking across all three examples, there is a clear pattern. First: Shape beats brute force. Clever curves solve resistance better than simply adding a bigger engine. Second: Work with the environment instead of fighting it. Use natural airflow rather than running power-hungry compressors 24/7. And third: Physical textures can replace harsh chemicals. For decades, manufacturing assumed progress meant subduing nature. Biomimicry proves that the smartest move is to treat nature as our greatest teacher."`
+      5: {
+        title: "05 // The Sharkskin Paradigm",
+        en: `
+          <span class="stage-cue">[STAGE CUE: Serious, impactful tone—connecting marine biology to hospital superbugs.]</span>
+          <p>What if pure geometry could also fight hospital superbugs without a single drop of antibiotics? In 2002, Dr. Anthony Brennan investigated shark dermal denticles—tooth-like scales arranged in repeating diamond riblets.</p>
+          <p>He discovered this texture inhibits bacterial attachment through physical surface energy, reducing colonization of pathogens like <strong>MRSA and <em>E. coli</em> by 80 to 90 percent</strong> in lab tests.</p>
+          <p>Crucially, it does not poison microbes; it is purely anti-adhesive. Because the bacteria are mechanically prevented from anchoring to form biofilms, there is zero chemical leaching and zero evolutionary pressure to breed drug-resistant superbugs.</p>
+        `,
+        hi: `
+          <span class="stage-cue">[STAGE CUE: Medical relevance highlight karein.]</span>
+          <p>Ab sochiye, kya sirf surface ki geometry bina kisi antibiotic ke deadly hospital bacteria ko rok sakti hai? 2002 mein <strong>Dr. Anthony Brennan</strong> ne discover kiya ki Sharks ki skin par diamond-shaped scales hote hain jinko <strong>Dermal Denticles</strong> kehte hain.</p>
+          <p>Yeh texture bacterial adhesion ko physical surface tension se rokta hai, jisse lab tests mein <strong>MRSA aur E. coli jaise superbugs ka colonization 80 se 90 percent kam ho gaya</strong>.</p>
+          <p>Sabse zaroori baat: yeh bacteria ko zahar se nahi maarta, balki unhe chipakne se rokta hai. Isliye bacteria iske khilaf koi antimicrobial drug resistance develop nahi kar sakte.</p>
+        `
       },
-      {
-        slide: 6,
-        title: "Conclusion",
-        cue: "Smile, let the meme and chime land with the audience, and invite questions.",
-        script: `"To wrap up: Nature isn’t just a warehouse of raw materials to use up. It’s the world's most experienced design studio. The most innovative breakthroughs ahead of us won’t come from trying to conquer the natural world, but from simply paying closer attention to it. Thank you very much, and I’d love to take any questions."`
+      6: {
+        title: "06 // Brute Force vs. Evolutionary Form",
+        en: `
+          <span class="stage-cue">[STAGE CUE: Let the audience take in the comparative matrix for 2 seconds before speaking.]</span>
+          <p>If we synthesize these case studies into a comparative matrix, a profound paradigm shift emerges.</p>
+          <p>Whether we examine aeroacoustic shockwaves in Japan, thermal loads in Zimbabwe, facade fouling in Europe, or hospital infections—20th-century industrial engineering always reached for <strong>bulk mass, high energy, or toxic chemistry</strong>.</p>
+          <p>Evolution solves the exact same differential equations using <strong>shape, hierarchy, and interfacial geometry</strong>. By substituting information for energy, we achieve 30% drag reductions, 90% HVAC savings, and non-toxic infection control.</p>
+        `,
+        hi: `
+          <span class="stage-cue">[STAGE CUE: Matrix table ko point karein.]</span>
+          <p>Agar hum in chaaron case studies ko is synthesis matrix mein ek saath dekhein, toh ek clear pattern saamne aata hai.</p>
+          <p>Chahe bullet train ka sonic boom ho, building cooling ho, self-cleaning glass ho, ya ICU catheters par superbug infection—20th century ne hamesha <strong>heavy energy ya toxic chemicals</strong> ka sahara liya.</p>
+          <p>Wahin doosri taraf, 3.8 billion years ke evolution ne wahi physics problems solve ki hain <strong>pure geometry aur micro-structure</strong> se. Jab hum energy ki jagah shape use karte hain, toh massive efficiency jump milta hai.</p>
+        `
+      },
+      7: {
+        title: "07 // Conclusion & Open Floor Q&A",
+        en: `
+          <span class="stage-cue">[STAGE CUE: As Slide 7 appears, let the gentle harmonic chime ring out. Smile warmly.]</span>
+          <p>To conclude: Nature has already conducted 3.8 billion years of field trials and solved the toughest engineering crises of the 21st century.</p>
+          <p>Our responsibility as scholars at CUSB is twofold: first, to replace industrial brute force with biological geometry; and second, to construct frameworks that protect nature's blueprints for the public good.</p>
+          <p>Thank you so much for your time. In the spirit of Tony Stark—the floor is now wide open for your questions and cross-examination!</p>
+        `,
+        hi: `
+          <span class="stage-cue">[STAGE CUE: Slide 7 aate hi Web Audio chord bajega. Ek warm aur confident smile dein.]</span>
+          <p>In conclusion: Nature pichle 3.8 billion years se apni research lab chala rahi hai aur 21st century ke sabse bade crises ka solution pehle hi nikal chuki hai.</p>
+          <p>CUSB ke scholars ke naate humari zimmedari hai ki hum brute force ko chhod kar nature ki geometry se seekhein, aur aisi soch ko aage badhayein jo in blueprints ko public welfare ke liye use kare.</p>
+          <p>Aap sabhi ka bahut-bahut shukriya. And now, in true Tony Stark style—the floor is open for any questions!</p>
+        `
       }
-    ];
+    };
 
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const totalSlides = slides.length;
-    const dotsContainer = document.getElementById('dots-container');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const notesBtn = document.getElementById('notes-btn');
-    const drawer = document.getElementById('speaker-drawer');
-    const drawerCloseBtn = document.getElementById('drawer-close-btn');
-    const scriptContent = document.getElementById('script-content');
-    const drawerSlideIndicator = document.getElementById('drawer-slide-indicator');
-    const outroAudio = document.getElementById('outro-sound');
+    /* State & Navigation */
+    let currentSlide = 1;
+    const totalSlides = 7;
+    let teleprompterOpen = false;
+    let currentLang = 'en';
+    let hasPlayedOutroChord = false;
+    let audioCtx = null;
 
-    const modal = document.getElementById('image-modal');
-    const modalImg = document.getElementById('modal-img');
-    const modalCaption = document.getElementById('modal-caption-text');
+    const progressFill = document.getElementById('progress-fill');
+    const counterEl = document.getElementById('slideCounter');
 
-    document.querySelectorAll('[data-zoom-img]').forEach(card => {
-      card.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const imgSrc = card.getAttribute('data-zoom-img');
-        const caption = card.getAttribute('data-zoom-title') || 'Preview';
-        const innerImg = card.querySelector('img');
-        modalImg.src = imgSrc;
-        modalImg.onerror = () => {
-          if (innerImg) modalImg.src = innerImg.src;
-        };
-        modalCaption.textContent = caption;
-        modal.classList.add('active');
-      });
-    });
-
-    function closeModal() {
-      modal.classList.remove('active');
-    }
-    modal.addEventListener('click', closeModal);
-
-    function playSynthesizedChime() {
-      try {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        const ctx = new AudioContext();
-        const notes = [523.25, 659.25, 783.99, 1046.50];
-        notes.forEach((freq, idx) => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.08);
-          gain.gain.setValueAtTime(0, ctx.currentTime + idx * 0.08);
-          gain.gain.linearRampToValueAtTime(0.18, ctx.currentTime + idx * 0.08 + 0.04);
-          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.08 + 1.6);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(ctx.currentTime + idx * 0.08);
-          osc.stop(ctx.currentTime + idx * 0.08 + 1.8);
-        });
-      } catch (e) {}
-    }
-
-    function triggerOutroSound() {
-      if (outroAudio && outroAudio.readyState >= 2) {
-        outroAudio.currentTime = 0;
-        outroAudio.play().catch(() => playSynthesizedChime());
-      } else {
-        playSynthesizedChime();
-      }
-    }
-
-    slides.forEach((_, idx) => {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if (idx === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goToSlide(idx));
-      dotsContainer.appendChild(dot);
-    });
-
-    const dots = document.querySelectorAll('.dot');
-
-    function updateSlideUI() {
+    function updateSlideView() {
+      const slides = document.querySelectorAll('.slide');
       slides.forEach((slide, idx) => {
-        slide.classList.remove('active', 'previous');
-        if (idx === currentSlide) {
+        const slideNum = idx + 1;
+        if (slideNum === currentSlide) {
           slide.classList.add('active');
-        } else if (idx < currentSlide) {
-          slide.classList.add('previous');
+        } else {
+          slide.classList.remove('active');
         }
       });
 
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === currentSlide);
-      });
+      if (counterEl) {
+        counterEl.textContent = `0${currentSlide} / 0${totalSlides}`;
+      }
 
-      const note = speakerNotes[currentSlide];
-      drawerSlideIndicator.textContent = `Slide ${currentSlide + 1} of ${totalSlides} • ${note.title}`;
-      scriptContent.innerHTML = `
-        <div class="cue-box"><strong>Stage Cue:</strong> ${note.cue}</div>
-        <p>${note.script}</p>
-      `;
+      const pct = (currentSlide / totalSlides) * 100;
+      if (progressFill) progressFill.style.width = `${pct}%`;
 
-      if (currentSlide === 5) {
-        setTimeout(triggerOutroSound, 320);
+      renderTeleprompter();
+
+      // Trigger Web Audio API synthesized chord ONCE on Slide 7
+      if (currentSlide === 7 && !hasPlayedOutroChord) {
+        hasPlayedOutroChord = true;
+        playSynthesizedOutroChord();
       }
     }
 
     function nextSlide() {
-      if (currentSlide < totalSlides - 1) {
+      if (currentSlide < totalSlides) {
         currentSlide++;
-        updateSlideUI();
+        updateSlideView();
       }
     }
 
     function prevSlide() {
-      if (currentSlide > 0) {
+      if (currentSlide > 1) {
         currentSlide--;
-        updateSlideUI();
+        updateSlideView();
       }
     }
 
-    function goToSlide(index) {
-      currentSlide = index;
-      updateSlideUI();
+    /* Teleprompter Drawer */
+    function renderTeleprompter() {
+      const data = TELEPROMPTER_DATA[currentSlide];
+      if (!data) return;
+
+      document.getElementById('tpSlideTitle').textContent = data.title;
+      document.getElementById('tpScriptBody').innerHTML = data[currentLang];
+    }
+
+    function toggleTeleprompter() {
+      teleprompterOpen = !teleprompterOpen;
+      document.body.classList.toggle('notes-open', teleprompterOpen);
+      renderTeleprompter();
+    }
+
+    function setTeleprompterLang(lang) {
+      currentLang = lang;
+      document.getElementById('langBtnEn').classList.toggle('active', lang === 'en');
+      document.getElementById('langBtnHi').classList.toggle('active', lang === 'hi');
+      renderTeleprompter();
+    }
+
+    /* Lightbox Modal */
+    function openLightbox(sourceId, title, caption) {
+      const container = document.getElementById(sourceId);
+      if (!container) return;
+
+      const stage = document.getElementById('lightboxStage');
+      stage.innerHTML = container.innerHTML;
+      document.getElementById('lightboxTitle').textContent = title;
+      document.getElementById('lightboxCaption').textContent = caption;
+
+      document.getElementById('lightboxModal').classList.add('open');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('open');
+    }
+
+    function handleLightboxBackdrop(e) {
+      if (e.target.id === 'lightboxModal') {
+        closeLightbox();
+      }
+    }
+
+    /* Web Audio API Harmonic Chord */
+    function playSynthesizedOutroChord() {
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+
+        if (!audioCtx) audioCtx = new AudioContextClass();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const now = audioCtx.currentTime;
+        const frequencies = [130.81, 196.00, 293.66, 329.63, 493.88]; // C-G-D-E-B Major 9th
+
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(1600, now);
+        filter.frequency.exponentialRampToValueAtTime(420, now + 3.4);
+        filter.connect(audioCtx.destination);
+
+        frequencies.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+
+          osc.type = idx % 2 === 0 ? 'triangle' : 'sine';
+          osc.frequency.setValueAtTime(freq, now);
+
+          const startOffset = idx * 0.045;
+          gain.gain.setValueAtTime(0.0001, now + startOffset);
+          gain.gain.linearRampToValueAtTime(0.055 / frequencies.length, now + startOffset + 0.08);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + startOffset + 3.5);
+
+          osc.connect(gain);
+          gain.connect(filter);
+
+          osc.start(now + startOffset);
+          osc.stop(now + startOffset + 3.6);
+        });
+      } catch (err) {}
+    }
+
+    function replayOutroChord() {
+      playSynthesizedOutroChord();
+    }
+
+    /* Fullscreen & Keybindings */
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
     }
 
     window.addEventListener('keydown', (e) => {
-      if (modal.classList.contains('active')) {
-        if (e.key === 'Escape') closeModal();
-        return;
+      const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+      if (activeTag === 'input' || activeTag === 'textarea') return;
+
+      const lightboxOpen = document.getElementById('lightboxModal').classList.contains('open');
+
+      if (e.key === 'Escape') {
+        if (lightboxOpen) {
+          closeLightbox();
+          return;
+        }
+        if (teleprompterOpen) {
+          toggleTeleprompter();
+          return;
+        }
       }
+
+      if (lightboxOpen) return;
 
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
         e.preventDefault();
@@ -1241,25 +1740,18 @@
       } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
         e.preventDefault();
         prevSlide();
-      } else if (e.key.toLowerCase() === 'n') {
-        drawer.classList.toggle('open');
-      } else if (e.key.toLowerCase() === 'f') {
-        if (!document.fullscreenElement) {
-          document.documentElement.requestFullscreen().catch(() => {});
-        } else {
-          document.exitFullscreen().catch(() => {});
-        }
-      } else if (e.key === 'Escape') {
-        drawer.classList.remove('open');
+      } else if (e.key === 'n' || e.key === 'N') {
+        e.preventDefault();
+        toggleTeleprompter();
+      } else if (e.key === 'f' || e.key === 'F') {
+        e.preventDefault();
+        toggleFullScreen();
       }
     });
 
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
-    notesBtn.addEventListener('click', () => drawer.classList.toggle('open'));
-    drawerCloseBtn.addEventListener('click', () => drawer.classList.remove('open'));
-
-    updateSlideUI();
+    window.onload = function () {
+      updateSlideView();
+    };
   </script>
 </body>
 </html>
