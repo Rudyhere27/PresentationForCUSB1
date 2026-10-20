@@ -77,5 +77,3 @@ PresentationForCUSB1/
 - Institution: Department of English, Central University of South Bihar (CUSB)
 - 
 - Topic: Biomimicry: 3.8 Billion Years of R&D
-
-Using `<p align="left"><a href="...">...` prevents Markdown syntax collisions with shields.io parameters, and clicking **Commit changes** will display the rendered badges.
