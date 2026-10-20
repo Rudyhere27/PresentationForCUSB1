@@ -1,13 +1,16 @@
-```markdown
 # Biomimicry: 3.8 Billion Years of R&D 🌿🚄
 
 > An art-directed, monograph-grade web keynote exploring evolutionary geometry, fluid mechanics, and patent jurisprudence. Designed and delivered by **Nimisha** at the Central University of South Bihar (CUSB).
 
 ### 🔗 [Launch Live Keynote Presentation](https://rudyhere27.github.io/PresentationForCUSB1/)
 
-[![Live Presentation](https://img.shields.io/badge/Live_Keynote-GitHub_Pages-2dd4bf?style=for-the-badge&logo=github)](https://rudyhere27.github.io/PresentationForCUSB1/)
-[![Status](https://img.shields.io/badge/Release-Production_Ready-D4A359?style=for-the-badge)]()
-[![Stack](https://img.shields.io/badge/Architecture-Vanilla_HTML5_/_CSS3_/_JS-C85A32?style=for-the-badge)]()
+<p align="left">
+  <a href="https://rudyhere27.github.io/PresentationForCUSB1/">
+    <img src="https://img.shields.io/badge/Live_Keynote-GitHub_Pages-2dd4bf?style=for-the-badge&logo=github" alt="Live Presentation" />
+  </a>
+  <img src="https://img.shields.io/badge/Release-Production_Ready-D4A359?style=for-the-badge" alt="Status" />
+  <img src="https://img.shields.io/badge/Architecture-Vanilla_HTML5_/_CSS3_/_JS-C85A32?style=for-the-badge" alt="Stack" />
+</p>
 
 ---
 
@@ -78,28 +81,3 @@ PresentationForCUSB1/
     ├── superhydrophobic.jpg # Slide 5: Clinical antimicrobial touch surface
     ├── outro_bottom_1.jpg   # Slide 7: Tony Stark closing frame
     └── outro.mp3            # (Optional) Local audio fallback
-
-```
-
----
-
-## 📚 Academic & Legal References
-
-1. Benyus, J. M. (1997). *Biomimicry: Innovation Inspired by Nature*. William Morrow & Co.
-2. Vincent, J. F., Bogatyreva, O. A., et al. (2006). *Biomimetics: its practice and theory*. Journal of the Royal Society Interface, 3(9), 471–482.
-3. Nakatsu, E. (1997). *Application of Biomimicry in Shinkansen High-Speed Train Design*. JR West Technical Report.
-4. Pearce, M. (2001). *Passively Cooled Building, Harare, Zimbabwe*. Architectural Design, 71(6).
-5. Barthlott, W., & Neinhuis, C. (1997). *Purity of the sacred lotus, or escape from contamination in biological surfaces*. Planta, 202(1), 1–8.
-6. Chung, K. K., Schumacher, J. F., Brennan, A. B., et al. (2007). *Impact of engineered surface microtopography on biofilm formation of S. aureus*. Biointerphases, 2(2), 89–94.
-
----
-
-## 👤 Credits
-
-* **Keynote Speaker:** Nimisha
-* **Institution:** Department of English, Central University of South Bihar (CUSB)
-* **Topic:** *Biomimicry: 3.8 Billion Years of R&D*
-
-```
-
-```
