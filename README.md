@@ -1,8 +1,4 @@
-# Biomimicry: 3.8 Billion Years of R&D 🌿🚄> An art-directed, monograph-grade web keynote exploring evolutionary geometry, fluid mechanics, and patent jurisprudence. Designed and delivered by **Nimisha** at the Central University of South Bihar (CUSB).
-
-[![Live Presentation](https://img.shields.io/badge/Live_Keynote-GitHub_Pages-2dd4bf?style=for-the-badge&logo=github)](https://rudyhere27.github.io/PresentationForCUSB1/)
-[![Status](https://img.shields.io/badge/Release-Production_Ready-D4A359?style=for-the-badge)]()
-[![Stack](https://img.shields.io/badge/Architecture-Vanilla_HTML5_/_CSS3_/_JS-C85A32?style=for-the-badge)]()
+# Biomimicry: 3.8 Billion Years of R&D 🌿🚄> An art-directed, monograph-grade web keynote exploring evolutionary geometry, fluid mechanics, and patent jurisprudence. Designed and delivered by **Nimisha** at the Central University of South Bihar (CUSB).### 🔗 [Launch Live Keynote Presentation](https://rudyhere27.github.io/PresentationForCUSB1/)**Live URL:** <https://rudyhere27.github.io/PresentationForCUSB1/>
 
 ---## 🏛️ Creative Thesis: *“Nature, Engineered by Time”*
 
@@ -78,4 +74,4 @@ PresentationForCUSB1/
 - 
 - Topic: Biomimicry: 3.8 Billion Years of R&D
 - 
-- Live Deployment: rudyhere27.github.io/PresentationForCUSB1/
+- Live Deployment: https://rudyhere27.github.io/PresentationForCUSB1/
