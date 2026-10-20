@@ -1,18 +1,40 @@
-# Biomimicry: 3.8 Billion Years of R&D 🌿🚄> An art-directed, monograph-grade web keynote exploring evolutionary geometry, fluid mechanics, and patent jurisprudence. Designed and delivered by **Nimisha** at the Central University of South Bihar (CUSB).### 🔗 [Launch Live Keynote Presentation](https://rudyhere27.github.io/PresentationForCUSB1/)<p align="left">
-  <a href="https://rudyhere27.github.io/PresentationForCUSB1/">    <img src="https://img.shields.io/badge/Live_Keynote-GitHub_Pages-2dd4bf?style=for-the-badge&logo=github" alt="Live Presentation" />
+# Biomimicry: 3.8 Billion Years of R&D 🌿🚄
+
+> An art-directed, monograph-grade web keynote exploring evolutionary geometry, fluid mechanics, and patent jurisprudence. Designed and delivered by **Nimisha** at the Central University of South Bihar (CUSB).
+
+### 🔗 [Launch Live Keynote Presentation](https://rudyhere27.github.io/PresentationForCUSB1/)
+
+<p align="left">
+  <a href="https://rudyhere27.github.io/PresentationForCUSB1/">
+    <img src="https://img.shields.io/badge/Live_Keynote-GitHub_Pages-2dd4bf?style=for-the-badge&logo=github" alt="Live Presentation" />
   </a>
   <img src="https://img.shields.io/badge/Release-Production_Ready-D4A359?style=for-the-badge" alt="Status" />
   <img src="https://img.shields.io/badge/Architecture-Vanilla_HTML5_/_CSS3_/_JS-C85A32?style=for-the-badge" alt="Stack" />
 </p>
----## 🏛️ Creative Thesis: *“Nature, Engineered by Time”*
+
+---
+
+## 🏛️ Creative Thesis: *“Nature, Engineered by Time”*
 
 Modern industrial manufacturing relies heavily on **brute force**—burning excess fossil fuels to conquer aerodynamic friction, operating energy-intensive HVAC chillers 24/7, and saturating hospital surfaces with chemical biocides that breed antimicrobial superbugs.
 
 This keynote presents an empirical paradigm shift: **Nature solves the exact same differential equations through shape, hierarchy, and information.** Over 3.8 billion years of live trials, biological morphogenesis has achieved order-of-magnitude efficiency gains using ambient solar constraints and zero synthetic toxins.
 
----## ✨ Key Features & Architectural Highlights- **Museum Monograph Aesthetic:** Ultra-deep obsidian canvas (`#0A0A09`), hairline dividers, tactile film grain, and editorial typography pairing *Cormorant Garamond*, *Plus Jakarta Sans*, *JetBrains Mono*, and *Caveat*.- **Interactive Botanical Dual-View (Slide 4):** Specimen photography of *Nelumbo nucifera* with an interactive instant toggle to inspect a vector schematic of the Cassie-Baxter superhydrophobic regime.- **Continuous Crossfade Morph (Slide 7):** A GPU-accelerated looping transition crossfading an architectural vector plate into the original film shot of Tony Stark with uncropped safe margins.- **Bilingual Rehearsal Teleprompter (Press `N`):** An off-canvas speech drawer containing synchronized stage cues and full spoken transcripts with an instant **English / Natural Hinglish** toggle.- **Zero-Dependency Vector Graphics:** Handcrafted SVG plates that scale cleanly to 4K projectors without pixelation or external font loading delays.- **Harmonic Audio Chime:** Embedded Web Audio API major chord sequence that plays once upon concluding the talk, with automatic fallback handling.- **Full Mobile & Touch Optimization:** Full touch-swipe gesture support (`touchstart` / `touchend`) with responsive layouts across phones, tablets, laptops, and projectors.
+---
 
----## 🗺️ Slide Narrative Breakdown
+## ✨ Key Features & Architectural Highlights
+
+- **Museum Monograph Aesthetic:** Ultra-deep obsidian canvas (`#0A0A09`), hairline dividers, tactile film grain, and editorial typography pairing *Cormorant Garamond*, *Plus Jakarta Sans*, *JetBrains Mono*, and *Caveat*.
+- **Interactive Botanical Dual-View (Slide 4):** Specimen photography of *Nelumbo nucifera* with an interactive instant toggle to inspect a vector schematic of the Cassie-Baxter superhydrophobic regime.
+- **Continuous Crossfade Morph (Slide 7):** A GPU-accelerated looping transition crossfading an architectural vector plate into the original film shot of Tony Stark with uncropped safe margins.
+- **Bilingual Rehearsal Teleprompter (Press `N`):** An off-canvas speech drawer containing synchronized stage cues and full spoken transcripts with an instant **English / Natural Hinglish** toggle.
+- **Zero-Dependency Vector Graphics:** Handcrafted SVG plates that scale cleanly to 4K projectors without pixelation or external font loading delays.
+- **Harmonic Audio Chime:** Embedded Web Audio API major chord sequence that plays once upon concluding the talk, with automatic fallback handling.
+- **Full Mobile & Touch Optimization:** Full touch-swipe gesture support (`touchstart` / `touchend`) with responsive layouts across phones, tablets, laptops, and projectors.
+
+---
+
+## 🗺️ Slide Narrative Breakdown
 
 | Chapter | Scientific Focus | Biological Specimen | Engineering Analog |
 | :--- | :--- | :--- | :--- |
@@ -49,7 +71,8 @@ PresentationForCUSB1/
 ├── README.md                # Keynote documentation & academic references
 │
 └── media/                   # Local media assets
-    ├── will_smith.png       # Slide 1: Hero keynote graphic    ├── kingfisher.jpg       # Slide 2: Alcedo atthis diving specimen
+    ├── will_smith.png       # Slide 1: Hero keynote graphic
+    ├── kingfisher.jpg       # Slide 2: Alcedo atthis diving specimen
     ├── bullet_train.jpg     # Slide 2: Series 500 bullet train nose
     ├── termite_mound.jpg    # Slide 3: Termite convective chimney diagram
     ├── eastgate_centre.jpg  # Slide 3: Eastgate Centre architectural section
